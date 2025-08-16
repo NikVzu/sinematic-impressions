@@ -41,7 +41,7 @@
             We turn <span class="grad-text">Attention</span> into <span class="neon">Revenue</span>
           </h1>
           <p class="muted reveal delay-2">
-            Wir skalieren Creator‑Accounts mit Performance‑Marketing, Chat‑Ops und datengetriebenen Funnels.
+            Wir skalieren Creator-Accounts mit Performance-Marketing, Chat-Ops und datengetriebenen Funnels.
           </p>
           <div class="cta-row reveal delay-3">
             <a href="#contact" class="btn btn-accent">Kostenloses Erstgespräch</a>
@@ -50,13 +50,13 @@
 
           <div class="badges reveal delay-4" aria-label="Trust badges">
             <div class="badge">
-              <span class="num" data-count="37">0</span><span class="badge-label">aktive Creators</span>
+              <span class="num" data-count="7">0</span><span class="badge-label">aktive Creators</span>
             </div>
             <div class="badge">
               <span class="num" data-count="4.8">0</span><span class="badge-label">Ø Rating</span>
             </div>
             <div class="badge">
-              <span class="num" data-count="120">0</span><span class="badge-label">DMs / h</span>
+              <span class="num" data-count="5000">0</span><span class="badge-label">DMs / h</span>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
       <div class="marquee" aria-hidden="true">
         <div class="track">
           <span>Strategy</span><span>Automation</span><span>Paid Social</span><span>Funnel</span>
-          <span>Retention</span><span>Chat‑Ops</span><span>UGC</span><span>Scaling</span>
+          <span>Retention</span><span>Chat-Ops</span><span>UGC</span><span>Scaling</span>
         </div>
       </div>
     </section>
@@ -81,16 +81,16 @@
       <div class="container">
         <div class="section-head">
           <h2 class="reveal">Was wir machen</h2>
-          <p class="muted reveal delay-1">Full‑Service für Wachstum: Strategie, Content, Paid & Chat.</p>
+          <p class="muted reveal delay-1">Full-Service für Wachstum: Strategie, Content, Paid & Chat.</p>
         </div>
         <div class="cards">
           <article class="card reveal">
             <img src="icon-growth.svg" alt="" class="icon">
-            <h3>Account‑Growth</h3>
-            <p>Positionierung, Content‑Plan & Wachstumshebeln – datenbasiert & schnell testbar.</p>
+            <h3>Account-Growth</h3>
+            <p>Positionierung, Content-Plan & Wachstumshebeln – datenbasiert & schnell testbar.</p>
             <ul>
-              <li>Content & Bio‑Optimization</li>
-              <li>Collabs & Cross‑Promo</li>
+              <li>Content & Bio-Optimization</li>
+              <li>Collabs & Cross-Promo</li>
               <li>Analytics & Experimente</li>
             </ul>
           </article>
@@ -99,15 +99,15 @@
             <h3>Paid Social</h3>
             <p>Messbares Wachstum über Ads & Creatives. Fokus auf CPA & LTV.</p>
             <ul>
-              <li>Multi‑Platform (IG/TikTok/X)</li>
+              <li>Multi-Platform (IG/TikTok/X)</li>
               <li>Creative Engine</li>
               <li>Attribution & Reporting</li>
             </ul>
           </article>
           <article class="card reveal delay-2">
             <img src="icon-chat.svg" alt="" class="icon">
-            <h3>Chat‑Operations</h3>
-            <p>High‑Velocity DMs mit Guidelines, Scripten & QA für maximale Conversion.</p>
+            <h3>Chat-Operations</h3>
+            <p>High-Velocity DMs mit Guidelines, Scripten & QA für maximale Conversion.</p>
             <ul>
               <li>24/7 Coverage</li>
               <li>Playbooks & QA</li>
@@ -145,7 +145,7 @@
             <img src="case-3.svg" alt="Case 3" />
             <div class="work-meta">
               <span>+68% ARPPU</span>
-              <h3>Creator C — Chat‑Ops</h3>
+              <h3>Creator C — Chat-Ops</h3>
             </div>
           </a>
         </div>
@@ -163,7 +163,7 @@
           <li class="reveal">
             <span class="dot"></span>
             <h3>Audit & Ziele</h3>
-            <p>Quick‑Audit & Zielbild. Wir definieren KPIs und Roadmap.</p>
+            <p>Quick-Audit & Zielbild. Wir definieren KPIs und Roadmap.</p>
           </li>
           <li class="reveal delay-1">
             <span class="dot"></span>
@@ -173,7 +173,7 @@
           <li class="reveal delay-2">
             <span class="dot"></span>
             <h3>Scale & QA</h3>
-            <p>Scaling, A/B‑Tests und wöchentliche Reviews mit klaren Learnings.</p>
+            <p>Scaling, A/B-Tests und wöchentliche Reviews mit klaren Learnings.</p>
           </li>
         </ol>
       </div>
@@ -196,7 +196,7 @@
         </details>
         <details class="faq-item reveal delay-2">
           <summary>Welche Laufzeiten?</summary>
-          <p>Flexibel. Meist 3‑Monatssprints, monatlich kündbar danach.</p>
+          <p>Flexibel. Meist 12-Monatssprints, monatlich kündbar danach.</p>
         </details>
       </div>
     </section>
@@ -207,18 +207,36 @@
         <div class="reveal">
           <h2>Let’s talk.</h2>
           <p class="muted">Kurzformular ausfüllen – wir melden uns binnen 24h.</p>
-          <form class="contact-form" name="contact" netlify>
-            <label>Dein Name<input required name="name" type="text" placeholder="Vorname Nachname"></label>
-            <label>E‑Mail<input required name="email" type="email" placeholder="you@mail.com"></label>
-            <label>Nachricht<textarea name="message" rows="4" placeholder="Worum geht’s?"></textarea></label>
+
+          <!-- Formspree-Formular mit Honeypot + Redirect -->
+          <form action="https://formspree.io/f/xjkodvpg" method="POST" class="contact-form">
+            <!-- Spam-Schutz (Honeypot) -->
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Weiterleitung nach Erfolg -->
+            <input type="hidden" name="_redirect" value="https://sinematicimpressions.com/danke.html">
+
+            <!-- Optional: Betreff der E-Mail -->
+            <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
+
+            <label>Dein Name
+              <input required name="name" type="text" placeholder="Vorname Nachname">
+            </label>
+            <label>E-Mail
+              <input required name="email" type="email" placeholder="you@mail.com">
+            </label>
+            <label>Nachricht
+              <textarea name="message" rows="4" placeholder="Worum geht’s?" required></textarea>
+            </label>
             <button class="btn btn-accent" type="submit">Absenden</button>
           </form>
         </div>
+
         <div class="reveal delay-1">
           <div class="reach">
             <h3>Kontakt</h3>
             <ul>
-              <li><strong>E‑Mail:</strong> business@sinematicimpressions.com</li>
+              <li><strong>E-Mail:</strong> business@sinematicimpressions.com</li>
               <li><strong>Standort:</strong> AT • Remote</li>
             </ul>
             <div class="socials">
@@ -236,7 +254,7 @@
   <footer class="site-footer">
     <div class="container foot">
       <a href="#top" class="brand foot-brand">
-        <img src="logo-mark.png" alt="" class="brand-mark" />
+        <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
         <span>Sinematic Impressions</span>
       </a>
       <p class="muted small">© <span id="y"></span> Sinematic Impressions. All rights reserved.</p>
