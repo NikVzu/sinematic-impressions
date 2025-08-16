@@ -8,10 +8,20 @@
   --card:#0c111b;
   --stroke:rgba(255,255,255,.08);
   --shadow:0 10px 30px rgba(0,0,0,.5);
+
+  /* Header-Höhe (für fixed header) */
+  --header-h: 68px;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;scroll-behavior:smooth}
-img{max-width:100%;display:block}
+html,body{
+  margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  scroll-behavior:smooth;
+  /* Anti-Wobble */
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
+}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 .container{width:min(1120px,92%);margin-inline:auto}
 .section{padding:96px 0;position:relative}
@@ -23,18 +33,30 @@ h3{margin:0 0 6px}
 .muted{color:var(--muted)}
 .small{font-size:.875rem}
 
-.site-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#0b0c0fe6,#0b0c0f99 60%,transparent);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--stroke)}
+/* ===== Header: FIXED statt sticky (ruhiger auf iOS) ===== */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:linear-gradient(180deg,#0b0c0fe6,#0b0c0f99 60%,transparent);
+  border-bottom:1px solid var(--stroke);
+  backdrop-filter:saturate(1.1) blur(8px);
+  -webkit-backdrop-filter:saturate(1.1) blur(8px);
+  transform:translateZ(0);
+  will-change:transform, backdrop-filter;
+}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700}
 .brand-name span{color:var(--accent)}
 .brand-mark{width:28px;height:28px}
 .nav-links{display:flex;align-items:center;gap:18px}
 .nav-links .btn{margin-left:6px}
-.hamburger{display:none;position:relative;width:42px;height:38px;background:transparent;border:1px solid var(--stroke);border-radius:10px;cursor:pointer}
+.hamburger{display:none;position:relative;width:42px;height:38px;background:transparent;border:1px solid var(--stroke);border-radius:10px}
 .hamburger span{position:absolute;left:9px;right:9px;height:2px;background:#fff;transition:.25s}
 .hamburger span:nth-child(1){top:11px}
 .hamburger span:nth-child(2){top:18px}
 .hamburger span:nth-child(3){top:25px}
+
+/* Platz unter fixed Header schaffen */
+.site-header + main{ padding-top: var(--header-h); }
 
 .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--stroke);padding:12px 16px;border-radius:12px;transition:.25s;cursor:pointer}
 .btn:hover{transform:translateY(-1px)}
@@ -46,18 +68,6 @@ h3{margin:0 0 6px}
   .grid-2{grid-template-columns:1fr}
   .nav-links{display:none}
   .hamburger{display:block}
-  .nav-links.open{
-    display:flex;
-    flex-direction:column;
-    position:absolute;
-    top:100%;
-    right:0;
-    background:var(--bg-alt);
-    padding:20px;
-    gap:14px;
-    border:1px solid var(--stroke);
-    border-radius:12px;
-  }
 }
 
 .hero{padding-top:40px}
@@ -70,13 +80,14 @@ h3{margin:0 0 6px}
 .badge{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border:1px solid var(--stroke);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
 .badge .num{font-weight:800;font-size:1.25rem;color:var(--accent)}
 
-.phone-stack{position:relative;isolation:isolate}
+.phone-stack{position:relative;isolation:isolate; overflow-x:clip;}
 .phone-stack img{width:100%;max-width:420px;border-radius:18px;border:1px solid var(--stroke);box-shadow:var(--shadow)}
-.phone-stack .float{position:absolute;right:-40px;bottom:-30px;transform:rotate(-3deg)}
-@media (max-width:900px){.phone-stack .float{right:-10px;bottom:-20px}}
+/* Kein Überstehen mehr */
+.phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
+@media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
 .marquee{overflow:hidden;border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);margin-top:48px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
-.marquee .track{display:flex;gap:42px;padding:14px 0;animation:marquee 18s linear infinite}
+.marquee .track{display:flex;gap:42px;padding:14px 0;animation:marquee 18s linear infinite; will-change:transform}
 .marquee span{opacity:.75}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -93,7 +104,7 @@ h3{margin:0 0 6px}
 @media (max-width:1000px){.work-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.work-grid{grid-template-columns:1fr}}
 .work-card{position:relative;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:var(--card)}
-.work-card img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.9;transition:.35s}
+.work-card img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.9;transition:.35s;display:block}
 .work-card .work-meta{position:absolute;inset:auto 14px 14px 14px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:10px 12px;border:1px solid var(--stroke);border-radius:12px}
 .work-card:hover img{transform:scale(1.025);opacity:1}
 
@@ -127,34 +138,13 @@ h3{margin:0 0 6px}
   .marquee .track{animation:none}
 }
 
-/* --- Mobile wobble/jank fixes --- */
-
-/* 1) Horizontalen Überlauf komplett verhindern */
-html, body { overflow-x: hidden; overscroll-behavior-x: none; }
-
-/* 2) Falls ein Kind-Element (z.B. Hero-Visual) übersteht, clippen */
-.section, .hero, .phone-stack { overflow-x: clip; } /* Safari 16+ versteht 'clip' */
-
-/* 3) Float-Bild im Hero nicht über den Rand schieben (verursacht mini-Overflow) */
-.phone-stack .float{
-  right: 0;              /* statt -40px */
-  bottom: -20px;
-  max-width: 88%;
-}
-
-/* 4) Sticky-Header performance auf iOS verbessern */
-.site-header{
-  transform: translateZ(0);            /* eigene Compositing-Layer */
-  will-change: transform, backdrop-filter;
-}
-
-/* 5) Auf kleinen Screens den Blur abschalten (iOS scrollt dann ruhiger) */
-@media (max-width: 768px){
+/* ----- Mobile Tweaks: Blur aus, ruhigere Scroll-Physik ----- */
+@media (max-width:768px){
   .site-header{
-    backdrop-filter: none;              /* Blur aus */
-    background: rgba(11,12,15,.92);     /* etwas deckender Hintergrund */
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:rgba(11,12,15,.92);
   }
+  /* Mobile Menü sichtbar im geöffneten Zustand */
+  .nav-links.open{display:flex !important; flex-direction:column; gap:12px}
 }
-
-/* 6) Sicherstellen, dass das Burger-Menü nicht Layout springt */
-.nav-links.open { display: flex !important; flex-direction: column; gap: 12px; }
