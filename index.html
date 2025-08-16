@@ -65,14 +65,29 @@
           </div>
         </div>
 
-        <div class="hero-art reveal delay-2">
-          <div class="phone-stack">
-            <!-- Deine PNGs -->
-            <img src="mock-1.png" alt="Dashboard Mockup 1">
-            <img src="mock-2.png" alt="Dashboard Mockup 2" class="float">
-          </div>
-        </div>
-      </div>
+        <!-- HERO SLIDER -->
+<div class="hero-art reveal delay-2">
+  <div class="slider" id="hero-slider" aria-label="Preview-Slider">
+    <div class="slides">
+      <figure class="slide">
+        <img src="mock-1.png" alt="Preview 1" loading="lazy">
+      </figure>
+      <figure class="slide">
+        <img src="mock-2.png" alt="Preview 2" loading="lazy">
+      </figure>
+      <figure class="slide">
+        <img src="mock-3.png" alt="Preview 3" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- Dots -->
+    <div class="slider-dots" aria-hidden="true">
+      <button class="dot is-active" data-i="0"></button>
+      <button class="dot" data-i="1"></button>
+      <button class="dot" data-i="2"></button>
+    </div>
+  </div>
+</div>
 
       <div class="marquee" aria-hidden="true">
         <div class="track">
