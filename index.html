@@ -208,30 +208,27 @@
           <h2>Let’s talk.</h2>
           <p class="muted">Kurzformular ausfüllen – wir melden uns binnen 24h.</p>
 
-          <!-- Formspree-Formular mit Honeypot + Redirect -->
-          <form action="https://formspree.io/f/xjkodvpg" method="POST" class="contact-form">
-            <!-- Spam-Schutz (Honeypot) -->
+          <!-- Neues Formular mit Formspree -->
+          <form class="contact-form" action="https://formspree.io/f/xjkodvpg" method="POST">
             <input type="text" name="_honey" style="display:none">
-
-            <!-- Weiterleitung nach Erfolg -->
-            <input type="hidden" name="_next" value="https://sinematicimpressions.com/danke.html">
-
-            <!-- Optional: Betreff der E-Mail -->
-            <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
-
+            
             <label>Dein Name
               <input required name="name" type="text" placeholder="Vorname Nachname">
             </label>
+
             <label>E-Mail
               <input required name="email" type="email" placeholder="you@mail.com">
             </label>
+
             <label>Nachricht
-              <textarea name="message" rows="4" placeholder="Worum geht’s?" required></textarea>
+              <textarea name="message" rows="4" placeholder="Worum geht’s?"></textarea>
             </label>
+
+            <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
+
             <button class="btn btn-accent" type="submit">Absenden</button>
           </form>
         </div>
-
         <div class="reveal delay-1">
           <div class="reach">
             <h3>Kontakt</h3>
@@ -254,7 +251,7 @@
   <footer class="site-footer">
     <div class="container foot">
       <a href="#top" class="brand foot-brand">
-        <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
+        <img src="logo-mark.png" alt="" class="brand-mark" />
         <span>Sinematic Impressions</span>
       </a>
       <p class="muted small">© <span id="y"></span> Sinematic Impressions. All rights reserved.</p>
