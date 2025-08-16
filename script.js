@@ -99,4 +99,45 @@ if (yEl) yEl.textContent = new Date().getFullYear();
       }
     }
   });
+
+  // =====================
+// Hero Slider
+// =====================
+(function heroSlider(){
+  const wrap = document.getElementById('hero-slider');
+  if (!wrap) return;
+
+  const track = wrap.querySelector('.slides');
+  const slides = [...wrap.querySelectorAll('.slide')];
+  const dots = [...wrap.querySelectorAll('.dot')];
+
+  const setActive = () => {
+    let best = 0, bestArea = -1;
+    const rectTrack = track.getBoundingClientRect();
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const visible =
+        Math.max(0, Math.min(r.right, rectTrack.right) - Math.max(r.left, rectTrack.left)) *
+        Math.max(0, Math.min(r.bottom, rectTrack.bottom) - Math.max(r.top, rectTrack.top));
+      if (visible > bestArea) { bestArea = visible; best = i; }
+    });
+    slides.forEach((s,i)=> s.classList.toggle('is-active', i===best));
+    dots.forEach((d,i)=> d.classList.toggle('is-active', i===best));
+  };
+
+  setActive();
+  let tick = 0;
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(tick);
+    tick = requestAnimationFrame(setActive);
+  }, { passive:true });
+
+  dots.forEach(d=>{
+    d.addEventListener('click', ()=>{
+      const i = +d.dataset.i || 0;
+      const target = slides[i];
+      if (target) target.scrollIntoView({ behavior:'smooth', inline:'center' });
+    });
+  });
+})();
 })();
