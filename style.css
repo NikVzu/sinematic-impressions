@@ -126,3 +126,35 @@ h3{margin:0 0 6px}
   *{animation:none!important;transition:none!important}
   .marquee .track{animation:none}
 }
+
+/* --- Mobile wobble/jank fixes --- */
+
+/* 1) Horizontalen Überlauf komplett verhindern */
+html, body { overflow-x: hidden; overscroll-behavior-x: none; }
+
+/* 2) Falls ein Kind-Element (z.B. Hero-Visual) übersteht, clippen */
+.section, .hero, .phone-stack { overflow-x: clip; } /* Safari 16+ versteht 'clip' */
+
+/* 3) Float-Bild im Hero nicht über den Rand schieben (verursacht mini-Overflow) */
+.phone-stack .float{
+  right: 0;              /* statt -40px */
+  bottom: -20px;
+  max-width: 88%;
+}
+
+/* 4) Sticky-Header performance auf iOS verbessern */
+.site-header{
+  transform: translateZ(0);            /* eigene Compositing-Layer */
+  will-change: transform, backdrop-filter;
+}
+
+/* 5) Auf kleinen Screens den Blur abschalten (iOS scrollt dann ruhiger) */
+@media (max-width: 768px){
+  .site-header{
+    backdrop-filter: none;              /* Blur aus */
+    background: rgba(11,12,15,.92);     /* etwas deckender Hintergrund */
+  }
+}
+
+/* 6) Sicherstellen, dass das Burger-Menü nicht Layout springt */
+.nav-links.open { display: flex !important; flex-direction: column; gap: 12px; }
