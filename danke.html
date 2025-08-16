@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Danke – Sinematic Impressions</title>
+
+  <!-- Suchmaschinen sollen diese Seite nicht indexieren -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts & Styles identisch zur Hauptseite -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Optional: Favicon/Logo -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body class="thankyou">
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand">
+        <img src="logo.png" alt="Sinematic Impressions Logo" class="brand-mark" />
+        <span class="brand-name">Sinematic <span>Impressions</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container" style="max-width:720px;text-align:center">
+      <h1 style="margin-bottom:0.5rem;">Danke für deine Nachricht!</h1>
+      <p class="muted" style="margin-bottom:2rem;">
+        Wir melden uns in der Regel innerhalb von 24&nbsp;Stunden zurück.
+      </p>
+
+      <a class="btn btn-accent" href="/">Zurück zur Startseite</a>
+
+      <p class="muted small" style="margin-top:2rem;">
+        Falls du etwas ergänzen willst, schreibe uns direkt an
+        <strong>business@sinematicimpressions.com</strong>.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container foot">
+      <span class="muted small">© <span id="y"></span> Sinematic Impressions</span>
+      <div class="foot-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Jahreszahl aktualisieren
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
