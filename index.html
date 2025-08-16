@@ -3,27 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sinematic Impressions — We Build OnlyFans</title>
-  <meta name="description" content="Sinematic Impressions: Social Growth & OnlyFans Management. Wir bauen Reichweite, führen Kampagnen und maximieren Creator-Umsätze." />
+  <title>Impressum & Datenschutz – Sinematic Impressions</title>
+  <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    /* kleine Hilfsstyles, rest kommt aus deiner style.css */
+    .legal main { padding-top: 7rem; }
+    .legal h1 { font-size: clamp(2rem, 2.5vw + 1rem, 3rem); margin-bottom: .5rem; }
+    .legal h2 { margin-top: 2.25rem; font-size: 1.5rem; }
+    .legal h3 { margin-top: 1.25rem; font-size: 1.1rem; }
+    .legal p, .legal li { line-height: 1.75; }
+    .legal .muted { opacity:.8 }
+    .legal .block { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 1.25rem 1.25rem; }
+    .legal .toc a { display:inline-block; margin-right:1rem; }
+    .site-header .brand { text-decoration:none }
+  </style>
 </head>
-<body>
+<body class="legal">
+  <!-- Kopf wie auf der Startseite -->
   <header class="site-header">
     <div class="container nav">
-      <a href="#top" class="brand">
+      <a href="/" class="brand">
         <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
         <span class="brand-name">Sinematic <span>Impressions</span></span>
       </a>
       <nav class="nav-links" id="nav-links">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Ablauf</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn-accent">Let’s Talk</a>
+        <a href="/">Start</a>
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact" class="btn btn-accent">Kontakt</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -31,241 +43,164 @@
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero section">
-      <div class="container grid-2">
-        <div class="hero-copy">
-          <p class="eyebrow reveal">OnlyFans & Social Growth</p>
-          <h1 class="reveal delay-1">
-            We turn <span class="grad-text">Attention</span> into <span class="neon">Revenue</span>
-          </h1>
-          <p class="muted reveal delay-2">
-            Wir skalieren Creator-Accounts mit Performance-Marketing, Chat-Ops und datengetriebenen Funnels.
-          </p>
-          <div class="cta-row reveal delay-3">
-            <a href="#contact" class="btn btn-accent">Kostenloses Erstgespräch</a>
-            <a href="#work" class="btn btn-ghost">Cases ansehen</a>
-          </div>
+  <main class="section" id="top">
+    <div class="container">
+      <h1>Impressum &amp; Datenschutzerklärung</h1>
+      <p class="muted">Stand: <span id="last-upd"></span></p>
 
-          <div class="badges reveal delay-4" aria-label="Trust badges">
-            <div class="badge">
-              <span class="num" data-count="37">0</span><span class="badge-label">aktive Creators</span>
-            </div>
-            <div class="badge">
-              <span class="num" data-count="4.8">0</span><span class="badge-label">Ø Rating</span>
-            </div>
-            <div class="badge">
-              <span class="num" data-count="120">0</span><span class="badge-label">DMs / h</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-art reveal delay-2">
-          <!-- Bild-Stack: sorgt dafür, dass die Fotos korrekt skaliert & positioniert sind -->
-          <div class="phone-stack">
-            <img src="mock-1.png" alt="Dashboard Mockup 1" class="mock a">
-            <img src="mock-2.png" alt="Dashboard Mockup 2" class="mock b">
-          </div>
-        </div>
-      </div>
+      <p class="toc">
+        <a href="#impressum">Zum Impressum</a> ·
+        <a href="#datenschutz">Zur Datenschutzerklärung</a>
+      </p>
 
-      <div class="marquee" aria-hidden="true">
-        <div class="track">
-          <span>Strategy</span><span>Automation</span><span>Paid Social</span><span>Funnel</span>
-          <span>Retention</span><span>Chat-Ops</span><span>UGC</span><span>Scaling</span>
-        </div>
-      </div>
-    </section>
+      <!-- IMPRESSUM -->
+      <section id="impressum" class="block">
+        <h2>Impressum</h2>
 
-    <!-- SERVICES -->
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="reveal">Was wir machen</h2>
-          <p class="muted reveal delay-1">Full-Service für Wachstum: Strategie, Content, Paid & Chat.</p>
-        </div>
-        <div class="cards">
-          <article class="card reveal">
-            <img src="icon-growth.svg" alt="" class="icon">
-            <h3>Account-Growth</h3>
-            <p>Positionierung, Content-Plan & Wachstumshebeln – datenbasiert & schnell testbar.</p>
-            <ul>
-              <li>Content & Bio-Optimization</li>
-              <li>Collabs & Cross-Promo</li>
-              <li>Analytics & Experimente</li>
-            </ul>
-          </article>
-          <article class="card reveal delay-1">
-            <img src="icon-ads.svg" alt="" class="icon">
-            <h3>Paid Social</h3>
-            <p>Messbares Wachstum über Ads & Creatives. Fokus auf CPA & LTV.</p>
-            <ul>
-              <li>Multi-Platform (IG/TikTok/X)</li>
-              <li>Creative Engine</li>
-              <li>Attribution & Reporting</li>
-            </ul>
-          </article>
-          <article class="card reveal delay-2">
-            <img src="icon-chat.svg" alt="" class="icon">
-            <h3>Chat-Operations</h3>
-            <p>High-Velocity DMs mit Guidelines, Scripten & QA für maximale Conversion.</p>
-            <ul>
-              <li>24/7 Coverage</li>
-              <li>Playbooks & QA</li>
-              <li>Retention & Upsell</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+        <p><strong>Medieninhaber &amp; Herausgeber</strong><br>
+          <strong>Sinematic Impressions</strong> – Inhaber: <strong>[Vor- und Nachname]</strong>
+        </p>
 
-    <!-- WORK -->
-    <section id="work" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="reveal">Cases</h2>
-          <p class="muted reveal delay-1">Ein kleiner Auszug – mehr im Call.</p>
-        </div>
+        <p><strong>Adresse</strong><br>
+          [Straße Hausnummer], [PLZ] [Ort], Österreich
+        </p>
 
-        <div class="work-grid">
-          <a class="work-card reveal" href="#" aria-label="Case 1">
-            <img src="case-1.svg" alt="Case 1" />
-            <div class="work-meta">
-              <span>+143% Umsatz</span>
-              <h3>Creator A — 90 Tage</h3>
-            </div>
-          </a>
-          <a class="work-card reveal delay-1" href="#" aria-label="Case 2">
-            <img src="case-2.svg" alt="Case 2" />
-            <div class="work-meta">
-              <span>CPA −37%</span>
-              <h3>Creator B — Paid Scaling</h3>
-            </div>
-          </a>
-          <a class="work-card reveal delay-2" href="#" aria-label="Case 3">
-            <img src="case-3.svg" alt="Case 3" />
-            <div class="work-meta">
-              <span>+68% ARPPU</span>
-              <h3>Creator C — Chat-Ops</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+        <p><strong>Kontakt</strong><br>
+          E-Mail: <a href="mailto:business@sinematicimpressions.com">business@sinematicimpressions.com</a><br>
+          Telefon: [optional]
+        </p>
 
-    <!-- PROCESS -->
-    <section id="process" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="reveal">So arbeiten wir</h2>
-          <p class="muted reveal delay-1">Klarer Ablauf. Schnelle Sprints. Messbare Ergebnisse.</p>
-        </div>
-        <ol class="timeline">
-          <li class="reveal">
-            <span class="dot"></span>
-            <div class="t-content">
-              <h3>Audit & Ziele</h3>
-              <p>Quick-Audit & Zielbild. Wir definieren KPIs und Roadmap.</p>
-            </div>
-          </li>
-          <li class="reveal delay-1">
-            <span class="dot"></span>
-            <div class="t-content">
-              <h3>Setup & Sprint</h3>
-              <p>Setup von Tracking, Playbooks, Content & Paid. Sprint 0.</p>
-            </div>
-          </li>
-          <li class="reveal delay-2">
-            <span class="dot"></span>
-            <div class="t-content">
-              <h3>Scale & QA</h3>
-              <p>Scaling, A/B-Tests und wöchentliche Reviews mit klaren Learnings.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
+        <p><strong>Unternehmensform</strong><br>
+          Einzelunternehmen (keine Eintragung im Firmenbuch erforderlich).<br>
+          UID-Nr.: [falls vorhanden] · Firmenbuchnummer: [falls vorhanden]
+        </p>
 
-    <!-- FAQ -->
-    <section id="faq" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="reveal">FAQ</h2>
-        </div>
+        <p><strong>Zuständige Kammer/Interessenvertretung</strong> (optional)<br>
+          Wirtschaftskammer Österreich (WKO), Fachgruppe Werbung &amp; Marktkommunikation.
+        </p>
 
-        <details class="faq-item reveal">
-          <summary>Mit welchen Creators arbeitet ihr?</summary>
-          <div class="faq-body">
-            Wir arbeiten mit ambitionierten Creators, die klare Ziele haben und bereit sind, Prozesse umzusetzen.
-          </div>
-        </details>
-        <details class="faq-item reveal delay-1">
-          <summary>Wie schnell gibt es Ergebnisse?</summary>
-          <div class="faq-body">
-            Erste Effekte meist in 2–4 Wochen (abhängig von Setup und Budget).
-          </div>
-        </details>
-        <details class="faq-item reveal delay-2">
-          <summary>Welche Laufzeiten?</summary>
-          <div class="faq-body">
-            Flexibel. Meist 3-Monatssprints, monatlich kündbar danach.
-          </div>
-        </details>
-      </div>
-    </section>
+        <p><strong>Berufsrechtliche Vorschriften</strong> (optional)<br>
+          geltende Rechtsgrundlagen u. a. <a href="https://www.ris.bka.gv.at/" target="_blank" rel="noopener">www.ris.bka.gv.at</a>
+        </p>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container grid-2">
-        <div class="reveal">
-          <h2>Let’s talk.</h2>
-          <p class="muted">Kurzformular ausfüllen – wir melden uns binnen 24h.</p>
+        <p><strong>Online-Streitbeilegung</strong><br>
+          Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten:
+          <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.
+          Wir sind nicht verpflichtet und grundsätzlich nicht bereit, an Streitbeilegungsverfahren vor einer
+          Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
 
-          <!-- Formspree + Redirect auf danke.html -->
-          <form action="https://formspree.io/f/xjkodvpg" method="POST" class="contact-form">
-            <input type="text" name="_honey" style="display:none">
-            <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
-            <input type="hidden" name="_next" value="https://sinematicimpressions.com/danke.html">
+        <h3>Haftungsausschluss</h3>
+        <p>Alle Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+          und Aktualität der Inhalte übernehmen wir keine Gewähr. Verlinkte Seiten wurden zum Zeitpunkt der Verlinkung
+          auf mögliche Rechtsverstöße überprüft, auf deren aktuelle Inhalte haben wir jedoch keinen Einfluss.</p>
 
-            <label>Dein Name<input required name="name" type="text" placeholder="Vorname Nachname"></label>
-            <label>E-Mail<input required name="email" type="email" placeholder="you@mail.com"></label>
-            <label>Nachricht<textarea name="message" rows="4" placeholder="Worum geht’s?"></textarea></label>
-            <button class="btn btn-accent" type="submit">Absenden</button>
-          </form>
-        </div>
-        <div class="reveal delay-1">
-          <div class="reach">
-            <h3>Kontakt</h3>
-            <ul>
-              <li><strong>E-Mail:</strong> business@sinematicimpressions.com</li>
-              <li><strong>Standort:</strong> AT • Remote</li>
-            </ul>
-            <div class="socials">
-              <a href="#" aria-label="Instagram" class="soc">IG</a>
-              <a href="#" aria-label="X" class="soc">X</a>
-              <a href="#" aria-label="Telegram" class="soc">TG</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h3>Urheberrecht</h3>
+        <p>Die auf dieser Website veröffentlichten Inhalte und Werke unterliegen dem Urheberrecht. Jede
+          Verwertung bedarf der vorherigen schriftlichen Zustimmung des Rechteinhabers, sofern nicht ausdrücklich
+          anders gekennzeichnet.</p>
 
+        <h3>Bild-/Grafiknachweise</h3>
+        <p>Eigene Grafiken, Mockups &amp; Illustrationen (sofern nicht anders angegeben).</p>
+      </section>
+
+      <!-- DATENSCHUTZ -->
+      <section id="datenschutz" class="block" style="margin-top:1.5rem">
+        <h2>Datenschutzerklärung</h2>
+
+        <p>Wir verarbeiten personenbezogene Daten ausschließlich auf Grundlage der DSGVO und des TKG.
+           Diese Erklärung informiert darüber, welche Daten wir wann und zu welchem Zweck verarbeiten.</p>
+
+        <h3>Verantwortlicher</h3>
+        <p><strong>Sinematic Impressions</strong> – Inhaber: <strong>[Vor- und Nachname]</strong><br>
+           [Straße Hausnummer], [PLZ] [Ort], Österreich<br>
+           E-Mail: <a href="mailto:business@sinematicimpressions.com">business@sinematicimpressions.com</a>
+        </p>
+
+        <h3>Hosting & Bereitstellung der Website</h3>
+        <p>Unsere Website wird über <strong>GitHub Pages</strong> bereitgestellt (GitHub, Inc.). Beim Aufruf der
+           Seiten werden aus technischen Gründen u. a. IP-Adresse, Datum/Zeit und angeforderte Ressourcen verarbeitet
+           (Server-Logs). Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und effizienten
+           Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+        <h3>Verwendung von Google Fonts</h3>
+        <p>Wir binden Schriftarten über <strong>Google Fonts</strong> ein. Beim Laden werden Anfragen an Server von
+           Google (USA/EU) gesendet, wodurch Ihre IP-Adresse übertragen wird. Rechtsgrundlage ist unser berechtigtes
+           Interesse an einer einheitlichen Darstellung (Art. 6 Abs. 1 lit. f DSGVO). Hinweis: Für maximale
+           Datensparsamkeit können Schriften alternativ lokal eingebunden werden.</p>
+
+        <h3>Kontaktformular / Formspree</h3>
+        <p>Wenn Sie das Kontaktformular nutzen, werden Ihre Angaben (Name, E-Mail, Nachricht) zum Zweck der
+           Bearbeitung der Anfrage verarbeitet. Wir verwenden den Dienst <strong>Formspree</strong> als technischen
+           Formular-Dienstleister. Die Daten werden über Formspree an uns übermittelt und dort vorübergehend
+           gespeichert. Rechtsgrundlagen: Vertragsanbahnung/Beantwortung von Anfragen (Art. 6 Abs. 1 lit. b DSGVO)
+           sowie unser berechtigtes Interesse an einer effizienten Abwicklung (Art. 6 Abs. 1 lit. f DSGVO).
+           Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">
+           Datenschutzerklärung Formspree</a>.</p>
+
+        <h3>Kommunikation per E-Mail</h3>
+        <p>Wenn Sie uns E-Mails senden, werden die darin enthaltenen Daten zum Zweck der Bearbeitung der
+           Anfrage und für den Fall von Anschlussfragen gespeichert (Art. 6 Abs. 1 lit. b und f DSGVO).</p>
+
+        <h3>Speicherdauer</h3>
+        <p>Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist.
+           Gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+
+        <h3>Ihre Rechte</h3>
+        <ul>
+          <li>Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit</li>
+          <li>Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. f DSGVO beruhen</li>
+          <li>Beschwerde bei der Aufsichtsbehörde: <a href="https://www.dsb.gv.at/" target="_blank" rel="noopener">
+              Österreichische Datenschutzbehörde</a></li>
+        </ul>
+
+        <h3>Änderungen dieser Erklärung</h3>
+        <p>Wir passen diese Erklärung bei Bedarf an, um sie auf dem aktuellen Stand zu halten.
+           Die jeweils gültige Fassung finden Sie auf dieser Seite.</p>
+      </section>
+
+      <p style="margin-top:1rem" class="muted small">
+        Hinweis: Diese Vorlage stellt keine Rechtsberatung dar, sondern einen praxistauglichen Ausgangspunkt
+        für österreichische Einzelunternehmer.
+      </p>
+
+      <p style="margin-top:1.25rem">
+        <a class="btn btn-ghost" href="#top">Nach oben</a>
+        <a class="btn btn-accent" href="/">Zur Startseite</a>
+      </p>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container foot">
-      <a href="#top" class="brand foot-brand">
+      <a href="/" class="brand foot-brand">
         <img src="logo-mark.png" alt="" class="brand-mark" />
         <span>Sinematic Impressions</span>
       </a>
-      <p class="muted small">© <span id="y"></span> Sinematic Impressions. All rights reserved.</p>
+      <p class="muted small">© <span id="y"></span> Sinematic Impressions</p>
       <div class="foot-links">
-        <a href="impressum.html#impressum">Impressum</a>
-        <a href="impressum.html#datenschutz">Datenschutz</a>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Jahr + Datum
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const d = new Date();
+    document.getElementById('last-upd').textContent =
+      d.toLocaleDateString('de-AT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+    // Burger-Menü wie auf Startseite
+    const burger = document.getElementById('hamburger');
+    const links = document.getElementById('nav-links');
+    if (burger){
+      burger.addEventListener('click', ()=>{
+        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+        links.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
 </html>
