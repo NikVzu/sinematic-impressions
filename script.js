@@ -5,8 +5,7 @@ const burger = document.getElementById('hamburger');
 const links = document.getElementById('nav-links');
 if (burger && links) {
   burger.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    links.style.display = open ? 'flex' : 'none';
+    links.classList.toggle('open');
   });
 }
 
@@ -58,8 +57,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
 // =====================
 // Kontaktformular (Formspree) + Redirect
 // =====================
-// Erwartet: <form class="contact-form" action="https://formspree.io/f/xjkodvpg" method="POST">
-// Optionales Honeypot-Feld: <input type="text" name="_honey" style="display:none">
 (function attachContactFormHandler() {
   const form = document.querySelector('form.contact-form');
   if (!form) return;
@@ -89,7 +86,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
       });
 
       if (res.ok) {
-        // Eigene Danke-Seite
         window.location.href = '/danke.html';
       } else {
         alert('Leider hat das Absenden nicht geklappt. Bitte später erneut versuchen.');
