@@ -5,7 +5,8 @@ const burger = document.getElementById('hamburger');
 const links = document.getElementById('nav-links');
 if (burger && links) {
   burger.addEventListener('click', () => {
-    links.classList.toggle('open');
+    const open = links.classList.toggle('open');
+    links.style.display = open ? 'flex' : 'none';
   });
 }
 
@@ -31,18 +32,13 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 function animateCount(el) {
   const target = parseFloat(el.dataset.count);
   if (isNaN(target)) return;
-
   const isFloat = String(target).includes('.');
   let cur = 0;
-  const frames = 60; // ~1 Sekunde
+  const frames = 60;
   const step = target / frames;
-
   const t = setInterval(() => {
     cur += step;
-    if (cur >= target) {
-      cur = target;
-      clearInterval(t);
-    }
+    if (cur >= target) { cur = target; clearInterval(t); }
     el.textContent = isFloat ? cur.toFixed(1) : Math.round(cur);
   }, 16);
 }
@@ -78,7 +74,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
 
     try {
       const formData = new FormData(form);
-
       const res = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -99,45 +94,96 @@ if (yEl) yEl.textContent = new Date().getFullYear();
       }
     }
   });
+})();
 
-  // =====================
-// Hero Slider
 // =====================
-(function heroSlider(){
-  const wrap = document.getElementById('hero-slider');
-  if (!wrap) return;
+// Tinder-like Swipe Stack
+// =====================
+(function swipeStack() {
+  const stack = document.getElementById('hero-stack');
+  if (!stack) return;
 
-  const track = wrap.querySelector('.slides');
-  const slides = [...wrap.querySelectorAll('.slide')];
-  const dots = [...wrap.querySelectorAll('.dot')];
+  const getTop = () => stack.querySelector('.swipe-card:nth-child(1)');
 
-  const setActive = () => {
-    let best = 0, bestArea = -1;
-    const rectTrack = track.getBoundingClientRect();
-    slides.forEach((s, i) => {
-      const r = s.getBoundingClientRect();
-      const visible =
-        Math.max(0, Math.min(r.right, rectTrack.right) - Math.max(r.left, rectTrack.left)) *
-        Math.max(0, Math.min(r.bottom, rectTrack.bottom) - Math.max(r.top, rectTrack.top));
-      if (visible > bestArea) { bestArea = visible; best = i; }
-    });
-    slides.forEach((s,i)=> s.classList.toggle('is-active', i===best));
-    dots.forEach((d,i)=> d.classList.toggle('is-active', i===best));
+  let startX = 0, startY = 0, dx = 0, dy = 0, dragging = false;
+
+  const setStyle = (el, x, y) => {
+    const rot = x * 0.06;
+    el.style.transform = translate(${x}px, ${y}px) rotate(${rot}deg);
   };
 
-  setActive();
-  let tick = 0;
-  track.addEventListener('scroll', () => {
-    cancelAnimationFrame(tick);
-    tick = requestAnimationFrame(setActive);
-  }, { passive:true });
+  const resetTop = (el) => {
+    el.style.transition = 'transform .25s ease';
+    el.style.transform = '';
+    setTimeout(() => (el.style.transition = ''), 250);
+  };
 
-  dots.forEach(d=>{
-    d.addEventListener('click', ()=>{
-      const i = +d.dataset.i || 0;
-      const target = slides[i];
-      if (target) target.scrollIntoView({ behavior:'smooth', inline:'center' });
+  const flyOut = (el, dir) => {
+    const off = (dir === 'right') ? 1 : -1;
+    el.style.transition = 'transform .35s ease, opacity .35s ease';
+    el.style.opacity = '0';
+    el.style.transform = translate(${off * window.innerWidth}px, ${dy * 0.3}px) rotate(${off * 30}deg);
+    setTimeout(() => {
+      el.style.transition = '';
+      el.style.opacity = '';
+      el.style.transform = '';
+      stack.appendChild(el); // Karte ans Ende
+    }, 360);
+  };
+
+  const pointerDown = (e) => {
+    const top = getTop();
+    if (!top) return;
+    dragging = true;
+    const p = e.touches ? e.touches[0] : e;
+    startX = p.clientX; startY = p.clientY;
+    dx = dy = 0;
+    top.style.transition = '';
+  };
+
+  const pointerMove = (e) => {
+    if (!dragging) return;
+    const top = getTop();
+    if (!top) return;
+    const p = e.touches ? e.touches[0] : e;
+    dx = p.clientX - startX;
+    dy = p.clientY - startY;
+    setStyle(top, dx, dy);
+    e.preventDefault();
+  };
+
+  const pointerUp = () => {
+    if (!dragging) return;
+    dragging = false;
+    const top = getTop();
+    if (!top) return;
+
+    const threshold = Math.min(140, window.innerWidth * 0.28);
+    if (Math.abs(dx) > threshold) {
+      flyOut(top, dx > 0 ? 'right' : 'left');
+    } else {
+      resetTop(top);
+    }
+  };
+
+  // Events
+  stack.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.swipe-card') === getTop()) pointerDown(e);
+  });
+  window.addEventListener('pointermove', pointerMove, { passive: false });
+  window.addEventListener('pointerup', pointerUp);
+
+  stack.addEventListener('touchstart', (e) => {
+    if (e.target.closest('.swipe-card') === getTop()) pointerDown(e);
+  }, { passive: true });
+  window.addEventListener('touchmove', pointerMove, { passive: false });
+  window.addEventListener('touchend', pointerUp);
+
+  // Buttons
+  document.querySelectorAll('.swipe-actions [data-dir]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const top = getTop();
+      if (top) flyOut(top, btn.dataset.dir);
     });
   });
-})();
 })();
