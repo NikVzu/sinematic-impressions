@@ -4,59 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Danke – Sinematic Impressions</title>
-
-  <!-- Suchmaschinen sollen diese Seite nicht indexieren -->
-  <meta name="robots" content="noindex, nofollow">
-
-  <!-- Fonts & Styles identisch zur Hauptseite -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Optional: Favicon/Logo -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0b0e12; --card:#10141b; --txt:#e9eef5; --muted:#9fb0c1; --accent:#21e6d6; }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--txt); }
+    .wrap{min-height:100dvh; display:grid; place-items:center; padding:32px;}
+    .card{background:linear-gradient(180deg,rgba(33,230,214,.06),transparent 40%) , var(--card);
+      border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:28px; max-width:680px; width:100%;
+      box-shadow:0 10px 40px rgba(0,0,0,.35)}
+    h1{font-size:clamp(28px,4vw,42px); margin:0 0 8px; letter-spacing:.2px}
+    p{color:var(--muted); line-height:1.55; margin:0 0 18px}
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px}
+    a.btn{display:inline-block; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:600}
+    .primary{background:var(--accent); color:#041011}
+    .ghost{border:1px solid rgba(255,255,255,.12); color:var(--txt)}
+    .brand{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+    .brand img{width:28px; height:28px}
+    .small{font-size:12px; color:var(--muted); margin-top:20px}
+  </style>
 </head>
-<body class="thankyou">
-  <header class="site-header">
-    <div class="container nav">
-      <a href="/" class="brand">
-        <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
-        <span class="brand-name">Sinematic <span>Impressions</span></span>
-      </a>
-    </div>
-  </header>
-
-  <main class="section">
-    <div class="container" style="max-width:720px;text-align:center">
-      <h1 style="margin-bottom:0.5rem;">Danke für deine Nachricht!</h1>
-      <p class="muted" style="margin-bottom:2rem;">
-        Wir melden uns in der Regel innerhalb von 24&nbsp;Stunden zurück.
-      </p>
-
-      <a class="btn btn-accent" href="/">Zurück zur Startseite</a>
-
-      <p class="muted small" style="margin-top:2rem;">
-        Falls du etwas ergänzen willst, schreibe uns direkt an
-        <strong>business@sinematicimpressions.com</strong>.
-      </p>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container foot">
-      <span class="muted small">© <span id="y"></span> Sinematic Impressions</span>
-      <div class="foot-links">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
+<body>
+  <main class="wrap">
+    <section class="card" role="status" aria-live="polite">
+      <div class="brand">
+        <img src="logo-mark.png" alt="Sinematic Impressions" />
+        <strong>Sinematic Impressions</strong>
       </div>
-    </div>
-  </footer>
-
-  <script>
-    // Jahreszahl aktualisieren
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+      <h1>Vielen Dank! 🎉</h1>
+      <p>Deine Nachricht ist bei uns eingegangen. Wir melden uns in der Regel innerhalb von <strong>24&nbsp;Stunden</strong>.</p>
+      <div class="actions">
+        <a class="btn primary" href="/">Zurück zur Startseite</a>
+        <a class="btn ghost" href="mailto:business@sinematicimpressions.com">Direkt E-Mail senden</a>
+      </div>
+      <p class="small">Falls du diese Seite versehentlich erreicht hast, schreib uns kurz – wir kümmern uns.</p>
+    </section>
+  </main>
 </body>
-
 </html>
