@@ -8,108 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Basis-Styles deiner Seite (wenn du eine externe style.css hast, lass diese Zeile drin) -->
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
-  <!-- Header/Mobile-Fix + ein paar Grundstyles -->
-  <style>
-    :root{
-      --bg:#0b0d0f;--panel:#121418;--muted:#a5b0bb;--text:#eaf0f6;--accent:#26e3d2;
-      --accent2:#24bfe0;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .container{width:min(1120px,92vw);margin:0 auto}
-    .section{padding:72px 0}
-    .muted{color:var(--muted)}
-
-    /* HEADER */
-    .site-header{position:sticky;top:0;z-index:50;background:rgba(11,13,15,.72);backdrop-filter:blur(10px);border-bottom:1px solid #1a1e23}
-    .site-header .nav{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-      padding:14px 0;
-    }
-    .brand{display:flex;align-items:center;font-weight:800;font-size:1.15rem;letter-spacing:.2px;gap:10px}
-    .brand .brand-mark{height:28px;width:auto}
-    .brand-name span{color:var(--accent)}
-
-    .nav-links{display:flex;gap:1.2rem;align-items:center}
-    .nav-links a{opacity:.9}
-    .btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #223; padding:.7rem 1rem;border-radius:10px}
-    .btn-accent{border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#001; font-weight:700}
-
-    /* Hamburger */
-    .hamburger{display:none;position:relative;width:40px;height:40px;border:1px solid #223;border-radius:10px;background:#121418}
-    .hamburger span{position:absolute;left:9px;right:9px;height:2px;background:#dfe7ef;border-radius:2px;transition:.25s}
-    .hamburger span:nth-child(1){top:12px}
-    .hamburger span:nth-child(2){top:19px}
-    .hamburger span:nth-child(3){top:26px}
-    .nav-links.open{display:flex}
-
-    /* HERO (kurz) */
-    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-    .eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:.85rem;color:var(--accent)}
-    h1{font-size:clamp(2.1rem,3.8vw,3.8rem);line-height:1.08;margin:.4rem 0 1rem}
-    .grad-text{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .neon{color:var(--accent)}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .badges{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
-    .badge{border:1px solid #1f242a;background:#0f1216;padding:.6rem .8rem;border-radius:12px}
-    .badge .num{font-weight:800;margin-right:.45rem}
-
-    .phone-stack{position:relative;aspect-ratio:3/2;border:1px dashed #2a3037;border-radius:16px;padding:20px;display:flex;align-items:center;justify-content:center;color:#7f8b98}
-    .phone-stack .float{position:absolute;right:-6%;top:8%;width:60%;transform:rotate(2deg)}
-
-    /* Abschnitte */
-    .alt{background:#0e1115}
-    .section-head{margin-bottom:24px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#101317;border:1px solid #1a1f26;border-radius:16px;padding:18px}
-    .card .icon{height:28px;margin-bottom:10px}
-
-    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .work-card{background:#101317;border:1px solid #1a1f26;border-radius:16px;overflow:hidden}
-    .work-card .work-meta{padding:14px}
-
-    .timeline{list-style:none;padding:0;margin:0;display:grid;gap:18px}
-    .timeline .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:8px}
-
-    .contact-form label{display:block;margin-bottom:10px}
-    .contact-form input,.contact-form textarea{
-      width:100%;border:1px solid #222a33;background:#0f1216;color:#eaf0f6;padding:.9rem 1rem;border-radius:12px
-    }
-    .reach{border:1px solid #1a1f26;background:#101317;border-radius:16px;padding:18px}
-    .soc{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:42px;border:1px solid #223;border-radius:10px;margin-right:8px}
-
-    .site-footer{border-top:1px solid #1a1e23;padding:28px 0;background:#0b0d0f}
-    .foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-    .foot .foot-brand{display:flex;align-items:center;gap:10px}
-    .small{font-size:.9rem;color:var(--muted)}
-    .foot-links{display:flex;gap:18px}
-
-    /* MOBILE */
-    @media (max-width: 768px){
-      .grid-2{grid-template-columns:1fr}
-      .cards,.work-grid{grid-template-columns:1fr}
-      .nav-links{display:none;flex-direction:column;width:100%;background:#101317;border:1px solid #1a1f26;border-radius:14px;padding:10px}
-      .nav-links a{padding:.7rem 0;text-align:center}
-      .hamburger{display:block}
-      .brand .brand-mark{height:26px}
-      .site-header .nav{gap:10px}
-    }
-
-    /* DESKTOP erzwungen sichtbares Menü */
-    @media (min-width: 769px){
-      .nav-links{display:flex!important}
-      .hamburger{display:none}
-    }
-  </style>
 </head>
-
 <body>
   <header class="site-header">
     <div class="container nav">
@@ -117,7 +18,6 @@
         <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
         <span class="brand-name">Sinematic <span>Impressions</span></span>
       </a>
-
       <nav class="nav-links" id="nav-links">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
@@ -125,7 +25,6 @@
         <a href="#faq">FAQ</a>
         <a href="#contact" class="btn btn-accent">Let’s Talk</a>
       </nav>
-
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
       </button>
@@ -144,24 +43,36 @@
           <p class="muted reveal delay-2">
             Wir skalieren Creator-Accounts mit Performance-Marketing, Chat-Ops und datengetriebenen Funnels.
           </p>
-
           <div class="cta-row reveal delay-3">
             <a href="#contact" class="btn btn-accent">Kostenloses Erstgespräch</a>
-            <a href="#work" class="btn">Cases ansehen</a>
+            <a href="#work" class="btn btn-ghost">Cases ansehen</a>
           </div>
 
           <div class="badges reveal delay-4" aria-label="Trust badges">
-            <div class="badge"><span class="num" data-count="37">0</span><span class="badge-label">aktive Creators</span></div>
-            <div class="badge"><span class="num" data-count="4.8">0</span><span class="badge-label">Ø Rating</span></div>
-            <div class="badge"><span class="num" data-count="120">0</span><span class="badge-label">DMs / h</span></div>
+            <div class="badge">
+              <span class="num" data-count="37">0</span><span class="badge-label">aktive Creators</span>
+            </div>
+            <div class="badge">
+              <span class="num" data-count="4.8">0</span><span class="badge-label">Ø Rating</span>
+            </div>
+            <div class="badge">
+              <span class="num" data-count="120">0</span><span class="badge-label">DMs / h</span>
+            </div>
           </div>
         </div>
-
         <div class="hero-art reveal delay-2">
+          <!-- Bild-Stack: sorgt dafür, dass die Fotos korrekt skaliert & positioniert sind -->
           <div class="phone-stack">
-            <img src="mock-1.png" alt="Dashboard Mockup 1">
-            <img src="mock-2.png" alt="Dashboard Mockup 2" class="float">
+            <img src="mock-1.png" alt="Dashboard Mockup 1" class="mock a">
+            <img src="mock-2.png" alt="Dashboard Mockup 2" class="mock b">
           </div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>Strategy</span><span>Automation</span><span>Paid Social</span><span>Funnel</span>
+          <span>Retention</span><span>Chat-Ops</span><span>UGC</span><span>Scaling</span>
         </div>
       </div>
     </section>
@@ -173,32 +84,35 @@
           <h2 class="reveal">Was wir machen</h2>
           <p class="muted reveal delay-1">Full-Service für Wachstum: Strategie, Content, Paid & Chat.</p>
         </div>
-
         <div class="cards">
           <article class="card reveal">
             <img src="icon-growth.svg" alt="" class="icon">
             <h3>Account-Growth</h3>
             <p>Positionierung, Content-Plan & Wachstumshebeln – datenbasiert & schnell testbar.</p>
             <ul>
-              <li>Content & Bio-Optimization</li><li>Collabs & Cross-Promo</li><li>Analytics & Experimente</li>
+              <li>Content & Bio-Optimization</li>
+              <li>Collabs & Cross-Promo</li>
+              <li>Analytics & Experimente</li>
             </ul>
           </article>
-
           <article class="card reveal delay-1">
             <img src="icon-ads.svg" alt="" class="icon">
             <h3>Paid Social</h3>
             <p>Messbares Wachstum über Ads & Creatives. Fokus auf CPA & LTV.</p>
             <ul>
-              <li>Multi-Platform (IG/TikTok/X)</li><li>Creative Engine</li><li>Attribution & Reporting</li>
+              <li>Multi-Platform (IG/TikTok/X)</li>
+              <li>Creative Engine</li>
+              <li>Attribution & Reporting</li>
             </ul>
           </article>
-
           <article class="card reveal delay-2">
             <img src="icon-chat.svg" alt="" class="icon">
             <h3>Chat-Operations</h3>
             <p>High-Velocity DMs mit Guidelines, Scripten & QA für maximale Conversion.</p>
             <ul>
-              <li>24/7 Coverage</li><li>Playbooks & QA</li><li>Retention & Upsell</li>
+              <li>24/7 Coverage</li>
+              <li>Playbooks & QA</li>
+              <li>Retention & Upsell</li>
             </ul>
           </article>
         </div>
@@ -214,9 +128,27 @@
         </div>
 
         <div class="work-grid">
-          <a class="work-card reveal" href="#"><img src="case-1.svg" alt="Case 1" /><div class="work-meta"><span>+143% Umsatz</span><h3>Creator A — 90 Tage</h3></div></a>
-          <a class="work-card reveal delay-1" href="#"><img src="case-2.svg" alt="Case 2" /><div class="work-meta"><span>CPA −37%</span><h3>Creator B — Paid Scaling</h3></div></a>
-          <a class="work-card reveal delay-2" href="#"><img src="case-3.svg" alt="Case 3" /><div class="work-meta"><span>+68% ARPPU</span><h3>Creator C — Chat-Ops</h3></div></a>
+          <a class="work-card reveal" href="#" aria-label="Case 1">
+            <img src="case-1.svg" alt="Case 1" />
+            <div class="work-meta">
+              <span>+143% Umsatz</span>
+              <h3>Creator A — 90 Tage</h3>
+            </div>
+          </a>
+          <a class="work-card reveal delay-1" href="#" aria-label="Case 2">
+            <img src="case-2.svg" alt="Case 2" />
+            <div class="work-meta">
+              <span>CPA −37%</span>
+              <h3>Creator B — Paid Scaling</h3>
+            </div>
+          </a>
+          <a class="work-card reveal delay-2" href="#" aria-label="Case 3">
+            <img src="case-3.svg" alt="Case 3" />
+            <div class="work-meta">
+              <span>+68% ARPPU</span>
+              <h3>Creator C — Chat-Ops</h3>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -229,9 +161,27 @@
           <p class="muted reveal delay-1">Klarer Ablauf. Schnelle Sprints. Messbare Ergebnisse.</p>
         </div>
         <ol class="timeline">
-          <li class="reveal"><span class="dot"></span><h3>Audit & Ziele</h3><p>Quick-Audit & Zielbild. Wir definieren KPIs und Roadmap.</p></li>
-          <li class="reveal delay-1"><span class="dot"></span><h3>Setup & Sprint</h3><p>Setup von Tracking, Playbooks, Content & Paid. Sprint 0.</p></li>
-          <li class="reveal delay-2"><span class="dot"></span><h3>Scale & QA</h3><p>Scaling, A/B-Tests und wöchentliche Reviews mit klaren Learnings.</p></li>
+          <li class="reveal">
+            <span class="dot"></span>
+            <div class="t-content">
+              <h3>Audit & Ziele</h3>
+              <p>Quick-Audit & Zielbild. Wir definieren KPIs und Roadmap.</p>
+            </div>
+          </li>
+          <li class="reveal delay-1">
+            <span class="dot"></span>
+            <div class="t-content">
+              <h3>Setup & Sprint</h3>
+              <p>Setup von Tracking, Playbooks, Content & Paid. Sprint 0.</p>
+            </div>
+          </li>
+          <li class="reveal delay-2">
+            <span class="dot"></span>
+            <div class="t-content">
+              <h3>Scale & QA</h3>
+              <p>Scaling, A/B-Tests und wöchentliche Reviews mit klaren Learnings.</p>
+            </div>
+          </li>
         </ol>
       </div>
     </section>
@@ -239,10 +189,28 @@
     <!-- FAQ -->
     <section id="faq" class="section alt">
       <div class="container">
-        <div class="section-head"><h2 class="reveal">FAQ</h2></div>
-        <details class="faq-item reveal"><summary>Mit welchen Creators arbeitet ihr?</summary><p>Mit ambitionierten Creators mit klaren Zielen und Umsetzungsbereitschaft.</p></details>
-        <details class="faq-item reveal delay-1"><summary>Wie schnell gibt es Ergebnisse?</summary><p>Erste Effekte meist in 2–4 Wochen (abhängig von Setup und Budget).</p></details>
-        <details class="faq-item reveal delay-2"><summary>Welche Laufzeiten?</summary><p>Flexibel. Meist 3-Monatssprints, danach monatlich kündbar.</p></details>
+        <div class="section-head">
+          <h2 class="reveal">FAQ</h2>
+        </div>
+
+        <details class="faq-item reveal">
+          <summary>Mit welchen Creators arbeitet ihr?</summary>
+          <div class="faq-body">
+            Wir arbeiten mit ambitionierten Creators, die klare Ziele haben und bereit sind, Prozesse umzusetzen.
+          </div>
+        </details>
+        <details class="faq-item reveal delay-1">
+          <summary>Wie schnell gibt es Ergebnisse?</summary>
+          <div class="faq-body">
+            Erste Effekte meist in 2–4 Wochen (abhängig von Setup und Budget).
+          </div>
+        </details>
+        <details class="faq-item reveal delay-2">
+          <summary>Welche Laufzeiten?</summary>
+          <div class="faq-body">
+            Flexibel. Meist 3-Monatssprints, monatlich kündbar danach.
+          </div>
+        </details>
       </div>
     </section>
 
@@ -253,29 +221,18 @@
           <h2>Let’s talk.</h2>
           <p class="muted">Kurzformular ausfüllen – wir melden uns binnen 24h.</p>
 
-          <!-- Formspree mit Redirect -->
+          <!-- Formspree + Redirect auf danke.html -->
           <form action="https://formspree.io/f/xjkodvpg" method="POST" class="contact-form">
-            <!-- Honeypot -->
             <input type="text" name="_honey" style="display:none">
-
-            <!-- Redirect -->
-            <input type="hidden" name="_next" value="https://sinematicimpressions.com/danke.html">
             <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
+            <input type="hidden" name="_next" value="https://sinematicimpressions.com/danke.html">
 
-            <label>Dein Name
-              <input required name="name" type="text" placeholder="Vorname Nachname">
-            </label>
-            <label>E-Mail
-              <input required name="email" type="email" placeholder="you@mail.com">
-            </label>
-            <label>Nachricht
-              <textarea name="message" rows="4" placeholder="Worum geht’s?"></textarea>
-            </label>
-
+            <label>Dein Name<input required name="name" type="text" placeholder="Vorname Nachname"></label>
+            <label>E-Mail<input required name="email" type="email" placeholder="you@mail.com"></label>
+            <label>Nachricht<textarea name="message" rows="4" placeholder="Worum geht’s?"></textarea></label>
             <button class="btn btn-accent" type="submit">Absenden</button>
           </form>
         </div>
-
         <div class="reveal delay-1">
           <div class="reach">
             <h3>Kontakt</h3>
@@ -292,6 +249,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -302,45 +260,12 @@
       </a>
       <p class="muted small">© <span id="y"></span> Sinematic Impressions. All rights reserved.</p>
       <div class="foot-links">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html#impressum">Impressum</a>
+        <a href="impressum.html#datenschutz">Datenschutz</a>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Mobile Nav Toggle
-    const burger = document.getElementById('hamburger');
-    const links = document.getElementById('nav-links');
-    if (burger && links){
-      burger.addEventListener('click', ()=>{
-        links.classList.toggle('open');
-      });
-    }
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    },{threshold:.2});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-    // Badge Counter
-    function animateCount(el){
-      const target = parseFloat(el.dataset.count);
-      const isFloat = String(target).includes('.');
-      let cur = 0, step = target/60;
-      const t = setInterval(()=>{
-        cur += step;
-        if (cur >= target){ cur = target; clearInterval(t); }
-        el.textContent = isFloat ? cur.toFixed(1) : Math.round(cur);
-      }, 16);
-    }
-    document.querySelectorAll('.badge .num').forEach(animateCount);
-
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
