@@ -11,13 +11,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body id="top">
+  <!-- ================= Header ================ -->
   <header class="site-header">
     <div class="container nav">
       <a href="#top" class="brand">
         <img src="logo-mark.png" alt="Sinematic Impressions Logo" class="brand-mark" />
         <span class="brand-name">Sinematic <span>Impressions</span></span>
       </a>
+
+      <!-- Burger zuerst, damit er mobil nicht überlappt -->
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="nav-links" id="nav-links">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
@@ -25,14 +32,11 @@
         <a href="#faq">FAQ</a>
         <a href="#contact" class="btn btn-accent">Let’s Talk</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
+  <main>
+    <!-- ================= HERO ================ -->
     <section class="hero section">
       <div class="container grid-2">
         <div class="hero-copy">
@@ -60,8 +64,10 @@
             </div>
           </div>
         </div>
+
         <div class="hero-art reveal delay-2">
           <div class="phone-stack">
+            <!-- Deine PNGs -->
             <img src="mock-1.png" alt="Dashboard Mockup 1">
             <img src="mock-2.png" alt="Dashboard Mockup 2" class="float">
           </div>
@@ -76,13 +82,14 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- ================ SERVICES =============== -->
     <section id="services" class="section">
       <div class="container">
         <div class="section-head">
           <h2 class="reveal">Was wir machen</h2>
           <p class="muted reveal delay-1">Full-Service für Wachstum: Strategie, Content, Paid & Chat.</p>
         </div>
+
         <div class="cards">
           <article class="card reveal">
             <img src="icon-growth.svg" alt="" class="icon">
@@ -94,6 +101,7 @@
               <li>Analytics & Experimente</li>
             </ul>
           </article>
+
           <article class="card reveal delay-1">
             <img src="icon-ads.svg" alt="" class="icon">
             <h3>Paid Social</h3>
@@ -104,6 +112,7 @@
               <li>Attribution & Reporting</li>
             </ul>
           </article>
+
           <article class="card reveal delay-2">
             <img src="icon-chat.svg" alt="" class="icon">
             <h3>Chat-Operations</h3>
@@ -118,7 +127,7 @@
       </div>
     </section>
 
-    <!-- WORK -->
+    <!-- ================== WORK ================= -->
     <section id="work" class="section alt">
       <div class="container">
         <div class="section-head">
@@ -134,6 +143,7 @@
               <h3>Creator A — 3 Monate</h3>
             </div>
           </a>
+
           <a class="work-card reveal delay-1" href="#" aria-label="Case 2">
             <img src="case-2.svg" alt="Case 2" />
             <div class="work-meta">
@@ -141,6 +151,7 @@
               <h3>Creator B — Paid Scaling</h3>
             </div>
           </a>
+
           <a class="work-card reveal delay-2" href="#" aria-label="Case 3">
             <img src="case-3.svg" alt="Case 3" />
             <div class="work-meta">
@@ -152,26 +163,28 @@
       </div>
     </section>
 
-    <!-- PROCESS -->
+    <!-- ================ PROCESS ================ -->
     <section id="process" class="section">
       <div class="container">
         <div class="section-head">
           <h2 class="reveal">So arbeiten wir</h2>
           <p class="muted reveal delay-1">Klarer Ablauf. Schnelle Sprints. Messbare Ergebnisse.</p>
         </div>
+
+        <!-- Linke Linie + Punkte über CSS, Inhalte sauber ausgerichtet -->
         <ol class="timeline">
           <li class="reveal">
-            <span class="dot"></span>
+            <span class="dot" aria-hidden="true"></span>
             <h3>Audit & Ziele</h3>
             <p>Quick-Audit & Zielbild. Wir definieren KPIs und Roadmap.</p>
           </li>
           <li class="reveal delay-1">
-            <span class="dot"></span>
+            <span class="dot" aria-hidden="true"></span>
             <h3>Setup & Sprint</h3>
             <p>Setup von Tracking, Playbooks, Content & Paid. Sprint 0.</p>
           </li>
           <li class="reveal delay-2">
-            <span class="dot"></span>
+            <span class="dot" aria-hidden="true"></span>
             <h3>Scale & QA</h3>
             <p>Scaling, A/B-Tests und wöchentliche Reviews mit klaren Learnings.</p>
           </li>
@@ -179,7 +192,7 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ================== FAQ ================== -->
     <section id="faq" class="section alt">
       <div class="container">
         <div class="section-head">
@@ -190,10 +203,12 @@
           <summary>Mit welchen Creators arbeitet ihr?</summary>
           <p>Wir arbeiten mit ambitionierten Creators, die klare Ziele haben und bereit sind, Prozesse umzusetzen.</p>
         </details>
+
         <details class="faq-item reveal delay-1">
           <summary>Wie schnell gibt es Ergebnisse?</summary>
           <p>Erste Effekte meist in 2–4 Wochen (abhängig von Setup und Budget).</p>
         </details>
+
         <details class="faq-item reveal delay-2">
           <summary>Welche Laufzeiten?</summary>
           <p>Flexibel. Meist 12-Monatssprints, monatlich kündbar danach.</p>
@@ -201,17 +216,17 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- =============== CONTACT ================= -->
     <section id="contact" class="section">
       <div class="container grid-2">
         <div class="reveal">
           <h2>Let’s talk.</h2>
           <p class="muted">Kurzformular ausfüllen – wir melden uns binnen 24h.</p>
 
-          <!-- Neues Formular mit Formspree -->
+          <!-- Formspree -->
           <form class="contact-form" action="https://formspree.io/f/xjkodvpg" method="POST">
             <input type="text" name="_honey" style="display:none">
-            
+
             <label>Dein Name
               <input required name="name" type="text" placeholder="Vorname Nachname">
             </label>
@@ -225,10 +240,10 @@
             </label>
 
             <input type="hidden" name="_subject" value="Neue Anfrage über sinematicimpressions.com">
-
             <button class="btn btn-accent" type="submit">Absenden</button>
           </form>
         </div>
+
         <div class="reveal delay-1">
           <div class="reach">
             <h3>Kontakt</h3>
@@ -245,9 +260,9 @@
         </div>
       </div>
     </section>
-
   </main>
 
+  <!-- ================= Footer ================ -->
   <footer class="site-footer">
     <div class="container foot">
       <a href="#top" class="brand foot-brand">
