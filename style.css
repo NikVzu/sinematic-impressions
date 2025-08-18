@@ -101,25 +101,28 @@ h3{margin:0 0 6px}
   margin-top:48px;
   background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
 }
+
 .marquee .track{
   display:flex;
-  width:max-content;              /* so breit wie Inhalt */
-  transform:translateX(0);        /* Start links */
+  width:200%;                 /* zwei Hälften nebeneinander */
+  animation:marquee 18s linear infinite;
+  will-change:transform;
 }
-.marquee .group{
+
+.marquee .row{
+  flex:0 0 50%;               /* jede Hälfte belegt 50% (= eine “Kachel”) */
   display:flex;
+  align-items:center;
   gap:42px;
   padding:14px 0;
+  white-space:nowrap;         /* keine Zeilenumbrüche */
 }
-.marquee .group span{opacity:.75; white-space:nowrap}
 
-/* Animation erst aktivieren, wenn JS „run“ setzt */
-.marquee .track.run{
-  animation:marquee 18s linear infinite;
-}
+.marquee .row span{ opacity:.75; }
+
 @keyframes marquee{
   from{ transform:translateX(0); }
-  to  { transform:translateX(-50%); } /* -50% weil 2 Gruppen */
+  to  { transform:translateX(-50%); }  /* exakt eine Hälfte nach links */
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
