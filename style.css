@@ -86,39 +86,32 @@ h3{margin:0 0 6px}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
 /* ===== Marquee ===== */
+
 .marquee {
   overflow: hidden;
   border-top: 1px solid var(--stroke);
   border-bottom: 1px solid var(--stroke);
   margin-top: 48px;
   background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+  position: relative;
 }
 
 .marquee .track {
-  display: flex;
-  width: max-content; /* Inhalt bestimmt Breite */
-  transform: translateX(0);
-}
-
-.marquee .group {
-  display: flex;
+  display: inline-flex;
   gap: 42px;
   padding: 14px 0;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
 }
 
-.marquee .group span {
+.marquee .track span {
   opacity: .75;
   white-space: nowrap;
 }
 
-/* Animation nur aktiv wenn JS .run setzt */
-.marquee .track.run {
-  animation: marquee 18s linear infinite;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* -50% weil 2 Gruppen */
+@keyframes scroll-left {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
