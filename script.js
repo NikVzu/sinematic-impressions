@@ -101,38 +101,40 @@ if (yEl) yEl.textContent = new Date().getFullYear();
   });
 })();
 
-// =====================
-// Marquee Fix: Start immer links
-// =====================
-window.addEventListener('load', () => {
-  const track = document.querySelector('.marquee .track');
-  if (track) {
-    void track.offsetWidth; // reflow
-    track.classList.add('run');
-  }
-});
-
-// ===== Marquee init (Desktop fix) =====
+// ===== Marquee init: misst Breite + startet Animation =====
 (function initMarquee(){
   const track = document.getElementById('marquee-track');
   if (!track) return;
 
-  // Wenn nur eine Gruppe vorhanden ist, duplizieren
-  const groups = track.querySelectorAll('.group');
-  if (groups.length === 1) {
-    track.appendChild(groups[0].cloneNode(true)).setAttribute('aria-hidden','true');
-  }
+  // Erste Gruppe holen
+  const first = track.querySelector('.group');
+  if (!first) return;
 
-  // Startposition sicher ganz links
-  track.style.transform = 'translateX(0)';
+  // Duplikat für nahtlosen Übergang
+  const clone = first.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  track.appendChild(clone);
 
-  // Animation nur starten, wenn keine reduced motion
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced) {
-    // Reflow erzwingen und dann Animation aktivieren
-    requestAnimationFrame(() => {
-      void track.offsetWidth;
-      track.classList.add('run');
-    });
+  // Startfunktion: misst endgültige Breite (nach Font-Load)
+  const start = () => {
+    // exakte Breite der ERSTEN Gruppe bestimmen
+    const w = first.scrollWidth;
+    // Distanz & Dauer setzen (Speed ≈ 120px/s)
+    const speedPxPerSec = 120;
+    const duration = (w / speedPxPerSec).toFixed(2) + 's';
+
+    track.style.setProperty('--marquee-w', w + 'px');
+    track.style.setProperty('--marquee-duration', duration);
+
+    // Reflow + Animation aktivieren
+    void track.offsetWidth;
+    track.classList.add('run');
+  };
+
+  // Warten bis Webfonts geladen sind, damit die Breite stimmt
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => requestAnimationFrame(start));
+  } else {
+    window.addEventListener('load', () => requestAnimationFrame(start));
   }
 })();
