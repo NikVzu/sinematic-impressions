@@ -85,7 +85,7 @@ h3{margin:0 0 6px}
 .phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
-/* ===== Marquee (Desktop fix) ===== */
+/* ===== Marquee: nahtlos & font-sicher ===== */
 .marquee{
   overflow:hidden;
   border-top:1px solid var(--stroke);
@@ -95,23 +95,26 @@ h3{margin:0 0 6px}
 }
 .marquee .track{
   display:flex;
-  width:max-content;              /* so breit wie Inhalt */
-  transform:translateX(0);        /* Start links */
+  width:max-content;                 /* so breit wie Inhalt */
+  transform:translateX(0);
+  will-change:transform;
 }
 .marquee .group{
   display:flex;
   gap:42px;
   padding:14px 0;
+  white-space:nowrap;
 }
-.marquee .group span{opacity:.75; white-space:nowrap}
+.marquee .group span{opacity:.75}
 
-/* Animation erst aktivieren, wenn JS „run“ setzt */
+/* Animation wird erst aktiviert, wenn JS .run setzt
+   und die CSS-Variablen --marquee-w & --marquee-duration belegt sind. */
 .marquee .track.run{
-  animation:marquee 18s linear infinite;
+  animation: marquee var(--marquee-duration, 20s) linear infinite;
 }
 @keyframes marquee{
-  from{ transform:translateX(0); }
-  to  { transform:translateX(-50%); } /* -50% weil 2 Gruppen */
+  from{ transform: translateX(0); }
+  to  { transform: translateX(calc(-1 * var(--marquee-w, 0px))); }
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
