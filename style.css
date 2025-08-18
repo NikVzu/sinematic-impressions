@@ -1,3 +1,4 @@
+
 :root{
   --bg:#0b0c0f;
   --bg-alt:#0f1116;
@@ -146,5 +147,19 @@ h3{margin:0 0 6px}
     background:rgba(11,12,15,.92);
   }
   /* Mobile Menü sichtbar im geöffneten Zustand */
-  .nav-links.open{display:flex !important; flex-direction:column; gap:12px}
+  .nav-links{
+    position: absolute;
+    top: var(--header-h);
+    right: 12px;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg-alt);
+    border: 1px solid var(--stroke);
+    border-radius: 12px;
+    padding: 16px;
+    display: none;
+    box-shadow: var(--shadow);
+    z-index: 200;
+  }
+  .nav-links.open{display:flex !important;}
 }
