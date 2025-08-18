@@ -125,6 +125,31 @@ h3{margin:0 0 6px}
   .marquee .track{ animation-duration: 42s; }
 }
 
+/* --- Marquee Anti-Wrap / Fix Doppelzeile --- */
+.marquee { line-height: 0; }                  /* verhindert extra Zeilenhöhe */
+
+.marquee .track{
+  display:flex;
+  width:max-content;
+  animation: marquee 36s linear infinite;
+  will-change: transform;
+  white-space: nowrap;                         /* KEIN Umbruch im Track */
+}
+
+.marquee .group{
+  display:flex;
+  align-items:center;                          /* vertikal sauber */
+  white-space: nowrap;                         /* KEIN Umbruch in der Gruppe */
+}
+
+.marquee .group span{
+  display:inline-block;
+  flex: 0 0 auto;                              /* nie schrumpfen/umbrechen */
+  padding:0 28px;                              /* Abstand zwischen Wörtern */
+  line-height:1;                               /* stabile Höhe */
+  opacity:.75;
+  white-space:nowrap;                          /* sicherheitshalber */
+}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.cards{grid-template-columns:1fr}}
