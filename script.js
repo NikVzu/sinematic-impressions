@@ -111,3 +111,28 @@ window.addEventListener('load', () => {
     track.classList.add('run');
   }
 });
+
+// ===== Marquee init (Desktop fix) =====
+(function initMarquee(){
+  const track = document.getElementById('marquee-track');
+  if (!track) return;
+
+  // Wenn nur eine Gruppe vorhanden ist, duplizieren
+  const groups = track.querySelectorAll('.group');
+  if (groups.length === 1) {
+    track.appendChild(groups[0].cloneNode(true)).setAttribute('aria-hidden','true');
+  }
+
+  // Startposition sicher ganz links
+  track.style.transform = 'translateX(0)';
+
+  // Animation nur starten, wenn keine reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    // Reflow erzwingen und dann Animation aktivieren
+    requestAnimationFrame(() => {
+      void track.offsetWidth;
+      track.classList.add('run');
+    });
+  }
+})();
