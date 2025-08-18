@@ -3,9 +3,36 @@
 // =====================
 const burger = document.getElementById('hamburger');
 const links = document.getElementById('nav-links');
+
+function closeMenu() {
+  if (!links) return;
+  links.classList.remove('open');
+  // Wenn du display per CSS steuerst, kein inline-style nötig.
+}
+
 if (burger && links) {
-  burger.addEventListener('click', () => {
+  // Toggle per Burger
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
     links.classList.toggle('open');
+  });
+
+  // Beim Klick auf einen Menülink wieder schließen
+  links.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => closeMenu())
+  );
+
+  // Klick außerhalb schließt das Menü
+  document.addEventListener('click', (e) => {
+    const clickedInsideNav = links.contains(e.target) || burger.contains(e.target);
+    if (!clickedInsideNav) closeMenu();
+  });
+
+  // Bei Resize auf Desktop zurücksetzen
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
   });
 }
 
