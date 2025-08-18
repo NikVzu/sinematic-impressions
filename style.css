@@ -85,33 +85,40 @@ h3{margin:0 0 6px}
 .phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
-/* ===== Marquee ===== */
-
-.marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--stroke);
-  border-bottom: 1px solid var(--stroke);
-  margin-top: 48px;
-  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
-  position: relative;
+/* Endlos-Marquee – langsamer & ohne Lücken */
+.marquee{
+  overflow:hidden;
+  border-top:1px solid var(--stroke);
+  border-bottom:1px solid var(--stroke);
+  margin-top:48px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
 }
 
-.marquee .track {
-  display: inline-flex;
-  gap: 42px;
-  padding: 14px 0;
-  white-space: nowrap;
-  animation: scroll-left 20s linear infinite;
+.marquee .track{
+  display:flex;
+  width:max-content;            /* so breit wie der Inhalt */
+  animation: marquee 32s linear infinite;  /* langsamer: 32s */
 }
 
-.marquee .track span {
-  opacity: .75;
-  white-space: nowrap;
+.marquee .group{
+  display:flex;
+  gap:42px;
+  padding:14px 0;
 }
 
-@keyframes scroll-left {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(-100%); }
+.marquee .group span{
+  opacity:.75;
+  white-space:nowrap;
+}
+
+@keyframes marquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* 2 identische Gruppen => -50% */
+}
+
+/* optional: noch ruhiger auf Mobile */
+@media (max-width: 768px){
+  .marquee .track{ animation-duration: 38s; }
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
