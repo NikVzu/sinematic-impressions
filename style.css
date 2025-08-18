@@ -85,40 +85,44 @@ h3{margin:0 0 6px}
 .phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
-/* Endlos-Marquee – langsamer & ohne Lücken */
+/* ===== Marquee: endlos, ohne Lücken, mit Abstand + langsamer ===== */
 .marquee{
-  overflow:hidden;
-  border-top:1px solid var(--stroke);
-  border-bottom:1px solid var(--stroke);
-  margin-top:48px;
-  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+  overflow: hidden;
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+  margin-top: 48px;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+  /* softer Kanten links/rechts (optional) */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .marquee .track{
-  display:flex;
-  width:max-content;            /* so breit wie der Inhalt */
-  animation: marquee 32s linear infinite;  /* langsamer: 32s */
+  display: flex;
+  width: max-content;         /* so breit wie der Inhalt */
+  animation: marquee 36s linear infinite;  /* Tempo: größer = langsamer */
 }
 
 .marquee .group{
-  display:flex;
-  gap:42px;
-  padding:14px 0;
+  display: flex;
 }
 
 .marquee .group span{
-  opacity:.75;
-  white-space:nowrap;
+  display: inline-block;
+  padding: 0 28px;            /* -> Abstand zwischen den Wörtern */
+  line-height: 1;             /* verhindert Höhenwackeln */
+  opacity: .75;
+  white-space: nowrap;
 }
 
 @keyframes marquee{
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* 2 identische Gruppen => -50% */
+  to   { transform: translateX(-50%); }  /* 2 identische Gruppen -> -50% */
 }
 
-/* optional: noch ruhiger auf Mobile */
+/* optional: noch langsamer auf Mobile */
 @media (max-width: 768px){
-  .marquee .track{ animation-duration: 38s; }
+  .marquee .track{ animation-duration: 42s; }
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
