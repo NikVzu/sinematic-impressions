@@ -93,19 +93,33 @@ h3{margin:0 0 6px}
   margin-top: 48px;
   background: linear-gradient(180deg,rgba(255,255,255,.02),transparent);
 }
-.marquee .track {
-  display: flex;
-  gap: 42px;
-  padding: 14px 0;
-  width: max-content;
-  transform: translateX(0);
+/* ===== Marquee (Desktop fix) ===== */
+.marquee{
+  overflow:hidden;
+  border-top:1px solid var(--stroke);
+  border-bottom:1px solid var(--stroke);
+  margin-top:48px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
 }
-.marquee .track.run {
-  animation: marquee 18s linear infinite;
+.marquee .track{
+  display:flex;
+  width:max-content;              /* so breit wie Inhalt */
+  transform:translateX(0);        /* Start links */
 }
-@keyframes marquee {
-  from {transform: translateX(0);}
-  to   {transform: translateX(-50%);}
+.marquee .group{
+  display:flex;
+  gap:42px;
+  padding:14px 0;
+}
+.marquee .group span{opacity:.75; white-space:nowrap}
+
+/* Animation erst aktivieren, wenn JS „run“ setzt */
+.marquee .track.run{
+  animation:marquee 18s linear infinite;
+}
+@keyframes marquee{
+  from{ transform:translateX(0); }
+  to  { transform:translateX(-50%); } /* -50% weil 2 Gruppen */
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
