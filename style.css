@@ -85,14 +85,6 @@ h3{margin:0 0 6px}
 .phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
-/* ===== Marquee (gefixt) ===== */
-.marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--stroke);
-  border-bottom: 1px solid var(--stroke);
-  margin-top: 48px;
-  background: linear-gradient(180deg,rgba(255,255,255,.02),transparent);
-}
 /* ===== Marquee (Desktop fix) ===== */
 .marquee{
   overflow:hidden;
@@ -101,28 +93,25 @@ h3{margin:0 0 6px}
   margin-top:48px;
   background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
 }
-
 .marquee .track{
   display:flex;
-  width:200%;                 /* zwei Hälften nebeneinander */
-  animation:marquee 18s linear infinite;
-  will-change:transform;
+  width:max-content;              /* so breit wie Inhalt */
+  transform:translateX(0);        /* Start links */
 }
-
-.marquee .row{
-  flex:0 0 50%;               /* jede Hälfte belegt 50% (= eine “Kachel”) */
+.marquee .group{
   display:flex;
-  align-items:center;
   gap:42px;
   padding:14px 0;
-  white-space:nowrap;         /* keine Zeilenumbrüche */
 }
+.marquee .group span{opacity:.75; white-space:nowrap}
 
-.marquee .row span{ opacity:.75; }
-
+/* Animation erst aktivieren, wenn JS „run“ setzt */
+.marquee .track.run{
+  animation:marquee 18s linear infinite;
+}
 @keyframes marquee{
   from{ transform:translateX(0); }
-  to  { transform:translateX(-50%); }  /* exakt eine Hälfte nach links */
+  to  { transform:translateX(-50%); } /* -50% weil 2 Gruppen */
 }
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
