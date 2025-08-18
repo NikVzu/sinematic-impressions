@@ -85,71 +85,54 @@ h3{margin:0 0 6px}
 .phone-stack .float{position:absolute;right:0;bottom:-20px;transform:rotate(-3deg);max-width:88%}
 @media (max-width:900px){.phone-stack .float{right:0;bottom:-16px;max-width:92%}}
 
-/* ===== Marquee: endlos, ohne Lücken, mit Abstand + langsamer ===== */
-.marquee{
+/* ===== Marquee: endlos, ohne Lücken, langsamer ===== */
+.marquee {
   overflow: hidden;
   border-top: 1px solid var(--stroke);
   border-bottom: 1px solid var(--stroke);
   margin-top: 48px;
   background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
-  /* softer Kanten links/rechts (optional) */
+
+  /* softere Kanten links/rechts */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
           mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  line-height: 0; /* verhindert Extra-Zeilen */
 }
 
-.marquee .track{
+.marquee .track {
   display: flex;
-  width: max-content;         /* so breit wie der Inhalt */
-  animation: marquee 36s linear infinite;  /* Tempo: größer = langsamer */
+  width: max-content;         
+  animation: marquee 36s linear infinite; /* größer = langsamer */
+  will-change: transform;
+  white-space: nowrap; /* kein Umbruch */
 }
 
-.marquee .group{
+.marquee .group {
   display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.marquee .group span{
+.marquee .group span {
   display: inline-block;
-  padding: 0 28px;            /* -> Abstand zwischen den Wörtern */
-  line-height: 1;             /* verhindert Höhenwackeln */
+  flex: 0 0 auto; /* nie umbrechen */
+  padding: 0 28px; /* Abstand zwischen Wörtern */
+  line-height: 1;
   opacity: .75;
   white-space: nowrap;
 }
 
-@keyframes marquee{
+@keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }  /* 2 identische Gruppen -> -50% */
 }
 
 /* optional: noch langsamer auf Mobile */
 @media (max-width: 768px){
-  .marquee .track{ animation-duration: 42s; }
+  .marquee .track { animation-duration: 42s; }
 }
 
-/* --- Marquee Anti-Wrap / Fix Doppelzeile --- */
-.marquee { line-height: 0; }                  /* verhindert extra Zeilenhöhe */
-
-.marquee .track{
-  display:flex;
-  width:max-content;
-  animation: marquee 36s linear infinite;
-  will-change: transform;
-  white-space: nowrap;                         /* KEIN Umbruch im Track */
-}
-
-.marquee .group{
-  display:flex;
-  align-items:center;                          /* vertikal sauber */
-  white-space: nowrap;                         /* KEIN Umbruch in der Gruppe */
-}
-
-.marquee .group span{
-  display:inline-block;
-  flex: 0 0 auto;                              /* nie schrumpfen/umbrechen */
-  padding:0 28px;                              /* Abstand zwischen Wörtern */
-  line-height:1;                               /* stabile Höhe */
-  opacity:.75;
-  white-space:nowrap;                          /* sicherheitshalber */
-}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.cards{grid-template-columns:1fr}}
