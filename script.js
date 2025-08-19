@@ -2,10 +2,13 @@
 // Mobile nav
 // =====================
 const burger = document.getElementById('hamburger');
-const links = document.getElementById('nav-links');
+const links  = document.getElementById('nav-links');
+
 if (burger && links) {
   burger.addEventListener('click', () => {
-    links.classList.toggle('open');
+    const open = links.classList.toggle('open');
+    burger.classList.toggle('is-open', open);          // -> X-Icon
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 }
 
