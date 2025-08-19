@@ -276,3 +276,27 @@ h3{margin:0 0 6px}
 
 /* Mini 3D hover – benötigt JS unten; degradiert elegant ohne JS */
 .case-card[data-tilt="1"] .case-media img{ transition: transform .6s ease; }
+
+/* ===== CASES: simples 3er-Grid für .cases-grid / .case-item ===== */
+.cases-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+  align-items:stretch;
+}
+@media (max-width:1000px){ .cases-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .cases-grid{ grid-template-columns:1fr; } }
+
+.case-item{
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  background:var(--card);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.case-item img{
+  width:100%;
+  display:block;
+  aspect-ratio:16/10;   /* gleiche Höhe */
+  object-fit:cover;     /* sauberer Zuschnitt */
+}
