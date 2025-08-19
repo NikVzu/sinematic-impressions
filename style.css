@@ -338,3 +338,42 @@ h3{margin:0 0 6px}
 }
 
 .cases-grid.compact .kpi{ font-size:.78rem; padding:6px 8px; }
+
+/* Burger – sauber auf Mobile */
+.hamburger{
+  display:none;
+  position:relative;
+  width:40px;height:40px;
+  border:1px solid var(--stroke);
+  border-radius:12px;
+  background:rgba(255,255,255,.03);   /* leichter BG, damit kein Glow durchscheint */
+  -webkit-tap-highlight-color:transparent;
+  z-index:120;                        /* über dem Dropdown */
+}
+.hamburger span{
+  position:absolute; left:9px; right:9px; height:2px;
+  background:#fff; border-radius:2px; transition:.25s;
+}
+.hamburger span:nth-child(1){ top:12px; }
+.hamburger span:nth-child(2){ top:19px; }
+.hamburger span:nth-child(3){ top:26px; }
+
+/* „X“-State, wenn offen */
+.hamburger.is-open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2){ opacity:0; }
+.hamburger.is-open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* Mobile-Dropdown als eigenes Pane, damit es den Burger nicht überdeckt */
+@media (max-width:900px){
+  .hamburger{ display:block; }
+
+  .nav-links{
+    position:absolute; top:calc(var(--header-h) + 8px); right:16px;
+    display:none; flex-direction:column; gap:12px;
+    padding:14px; border:1px solid var(--stroke); border-radius:14px;
+    background:rgba(10,12,16,.92);
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+    z-index:110;
+  }
+  .nav-links.open{ display:flex !important; }
+}
