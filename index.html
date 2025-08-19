@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body id="top">
@@ -20,7 +20,6 @@
         <span class="brand-name">Sinematic <span>Impressions</span></span>
       </a>
 
-      <!-- Burger -->
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="nav-links" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -38,6 +37,14 @@
   <main>
     <!-- ================= HERO ================ -->
     <section class="hero section">
+      <!-- Animierter Hero-Background -->
+      <div class="hero-bg" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="grain"></div>
+      </div>
+
       <div class="container grid-2">
         <div class="hero-copy">
           <p class="eyebrow reveal">OnlyFans & Social Growth</p>
@@ -66,14 +73,14 @@
         </div>
 
         <div class="hero-art reveal delay-2">
-          <div class="phone-stack">
+          <div class="phone-stack" data-parallax>
             <img src="mock-1.png" alt="Dashboard Mockup 1">
             <img src="mock-2.png" alt="Dashboard Mockup 2" class="float">
           </div>
         </div>
       </div>
 
-      <!-- MARQUEE: endlos + langsam (CSS-only) -->
+      <!-- MARQUEE: endlos + langsam -->
       <div class="marquee" aria-hidden="true">
         <div class="track">
           <div class="group">
@@ -139,21 +146,25 @@
     <section id="work" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Cases</h2>
-          <p class="muted">Ein kleiner Auszug – mehr im Call.</p>
+          <h2 class="reveal">Cases</h2>
+          <p class="muted reveal delay-1">Ein kleiner Auszug – mehr im Call.</p>
         </div>
 
-        <div class="cases-grid compact">
+        <div class="cases-grid compact reveal">
           <!-- Case 1 -->
           <article class="case-card">
             <div class="case-media">
               <img src="/case-1.svg?v=2" alt="Case 1" loading="lazy">
-              <div class="kpis"><span class="kpi good">+143% Umsatz</span></div>
+              <div class="kpis">
+                <span class="kpi good">+143% Umsatz</span>
+              </div>
             </div>
             <div class="case-body">
               <h3>Creator A — 3 Monate</h3>
               <p class="muted small">Paid & Chat-Ops. Fokus auf CPA & Bindung.</p>
-              <div class="tags"><span>Paid Social</span><span>Funnel</span><span>Chat-Ops</span></div>
+              <div class="tags">
+                <span>Paid Social</span><span>Funnel</span><span>Chat-Ops</span>
+              </div>
             </div>
           </article>
 
@@ -161,12 +172,16 @@
           <article class="case-card">
             <div class="case-media">
               <img src="/case-2.svg?v=2" alt="Case 2" loading="lazy">
-              <div class="kpis"><span class="kpi">CPA −37%</span></div>
+              <div class="kpis">
+                <span class="kpi">CPA −37%</span>
+              </div>
             </div>
             <div class="case-body">
               <h3>Creator B — Skalierung</h3>
               <p class="muted small">Creative Engine, Whitelisting & Lookalikes.</p>
-              <div class="tags"><span>Ads</span><span>Creatives</span><span>Attribution</span></div>
+              <div class="tags">
+                <span>Ads</span><span>Creatives</span><span>Attribution</span>
+              </div>
             </div>
           </article>
 
@@ -174,12 +189,16 @@
           <article class="case-card">
             <div class="case-media">
               <img src="/case-3.svg?v=2" alt="Case 3" loading="lazy">
-              <div class="kpis"><span class="kpi good">+68% Umsatz pro User</span></div>
+              <div class="kpis">
+                <span class="kpi good">+68% Umsatz pro User</span>
+              </div>
             </div>
             <div class="case-body">
               <h3>Creator C — Chat-Ops</h3>
               <p class="muted small">24/7 Betreuung, Playbooks & Qualitätssicherung.</p>
-              <div class="tags"><span>DM</span><span>Upsell</span><span>QA</span></div>
+              <div class="tags">
+                <span>DM</span><span>Upsell</span><span>QA</span>
+              </div>
             </div>
           </article>
         </div>
@@ -294,6 +313,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js"></script>
 </body>
 </html>
