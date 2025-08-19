@@ -7,7 +7,7 @@ const links  = document.getElementById('nav-links');
 if (burger && links) {
   burger.addEventListener('click', () => {
     const open = links.classList.toggle('open');
-    burger.classList.toggle('is-open', open);          // -> X-Icon
+    burger.classList.toggle('is-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 }
@@ -102,30 +102,4 @@ if (yEl) yEl.textContent = new Date().getFullYear();
       }
     }
   });
-})();
-
-// ===== Marquee init =====
-(function initMarquee(){
-  const track = document.getElementById('marquee-track');
-  if (!track) return;
-
-  // Falls nur 1 .group da ist → automatisch duplizieren
-  const groups = track.querySelectorAll('.group');
-  if (groups.length === 1) {
-    const clone = groups[0].cloneNode(true);
-    clone.setAttribute('aria-hidden','true');
-    track.appendChild(clone);
-  }
-
-  // Startposition reset
-  track.style.transform = 'translateX(0)';
-
-  // Animation aktivieren (wenn kein reduced-motion aktiv ist)
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced) {
-    requestAnimationFrame(() => {
-      void track.offsetWidth; // Reflow erzwingen
-      track.classList.add('run');
-    });
-  }
 })();
