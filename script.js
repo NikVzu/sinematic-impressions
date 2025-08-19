@@ -3,7 +3,6 @@
 // =====================
 const burger = document.getElementById('hamburger');
 const links  = document.getElementById('nav-links');
-
 if (burger && links) {
   burger.addEventListener('click', () => {
     const open = links.classList.toggle('open');
@@ -34,18 +33,13 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 function animateCount(el) {
   const target = parseFloat(el.dataset.count);
   if (isNaN(target)) return;
-
   const isFloat = String(target).includes('.');
   let cur = 0;
-  const frames = 60; // ~1 Sekunde
+  const frames = 60;
   const step = target / frames;
-
   const t = setInterval(() => {
     cur += step;
-    if (cur >= target) {
-      cur = target;
-      clearInterval(t);
-    }
+    if (cur >= target) { cur = target; clearInterval(t); }
     el.textContent = isFloat ? cur.toFixed(1) : Math.round(cur);
   }, 16);
 }
@@ -67,7 +61,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Honeypot (Spam-Schutz)
     const honey = form.querySelector('[name="_honey"]');
     if (honey && honey.value) return;
 
@@ -81,7 +74,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
 
     try {
       const formData = new FormData(form);
-
       const res = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -102,4 +94,26 @@ if (yEl) yEl.textContent = new Date().getFullYear();
       }
     }
   });
+})();
+
+// =====================
+// Mini-Parallax auf Hero mockups (dezent)
+// =====================
+(function miniParallax(){
+  const wrap = document.querySelector('[data-parallax]');
+  if (!wrap) return;
+
+  const strength = 10; // px
+  function handle(e){
+    const rect = wrap.getBoundingClientRect();
+    const x = ( (e.clientX ?? (e.touches && e.touches[0].clientX)) - rect.left ) / rect.width - 0.5;
+    const y = ( (e.clientY ?? (e.touches && e.touches[0].clientY)) - rect.top ) / rect.height - 0.5;
+    wrap.style.transform = `translate3d(${(-x*strength)}px, ${(-y*strength)}px, 0)`;
+  }
+  function reset(){ wrap.style.transform = 'translate3d(0,0,0)'; }
+
+  wrap.addEventListener('mousemove', handle);
+  wrap.addEventListener('mouseleave', reset);
+  wrap.addEventListener('touchmove', handle, {passive:true});
+  wrap.addEventListener('touchend', reset);
 })();
