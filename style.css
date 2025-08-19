@@ -313,3 +313,28 @@ h3{margin:0 0 6px}
 .cases-grid.small { gap: 12px; }
 .cases-grid.small .case-item { padding: 6px; border-radius: 10px; }
 .cases-grid.small .case-item img { max-height: 88px; } /* <- noch kleiner */
+
+/* Cases: kompakt + Textdarstellung */
+.cases-grid.compact{
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+@media (max-width:1000px){ .cases-grid.compact{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:700px){  .cases-grid.compact{ grid-template-columns:1fr; } }
+
+.cases-grid.compact .case-card{ border-radius:14px; }
+.cases-grid.compact .case-media{ aspect-ratio:16/9; }          /* etwas größer als vorher */
+.cases-grid.compact .case-body{ padding:12px 12px 14px; }
+
+.cases-grid.compact .case-body h3{
+  margin:0 0 6px;
+  font-size:1rem;                                               /* Headline kompakt */
+}
+.cases-grid.compact .case-body .small{ font-size:.9rem; }
+
+.cases-grid.compact .tags span{
+  font-size:.72rem;
+  padding:4px 8px;
+}
+
+.cases-grid.compact .kpi{ font-size:.78rem; padding:6px 8px; }
