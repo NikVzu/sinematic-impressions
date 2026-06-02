@@ -1,46 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Danke – Sinematic Impressions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --bg:#0b0e12; --card:#10141b; --txt:#e9eef5; --muted:#9fb0c1; --accent:#21e6d6; }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--txt); }
-    .wrap{min-height:100dvh; display:grid; place-items:center; padding:32px;}
-    .card{background:linear-gradient(180deg,rgba(33,230,214,.06),transparent 40%) , var(--card);
-      border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:28px; max-width:680px; width:100%;
-      box-shadow:0 10px 40px rgba(0,0,0,.35)}
-    h1{font-size:clamp(28px,4vw,42px); margin:0 0 8px; letter-spacing:.2px}
-    p{color:var(--muted); line-height:1.55; margin:0 0 18px}
-    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px}
-    a.btn{display:inline-block; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:600}
-    .primary{background:var(--accent); color:#041011}
-    .ghost{border:1px solid rgba(255,255,255,.12); color:var(--txt)}
-    .brand{display:flex; align-items:center; gap:10px; margin-bottom:14px}
-    .brand img{width:28px; height:28px}
-    .small{font-size:12px; color:var(--muted); margin-top:20px}
-  </style>
+  <title>Danke</title>
+  <link rel="icon" href="./favicon.svg" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <main class="wrap">
-    <section class="card" role="status" aria-live="polite">
-      <div class="brand">
-        <img src="logo-mark.png" alt="Sinematic Impressions" />
-        <strong>Sinematic Impressions</strong>
-      </div>
-      <h1>Vielen Dank! 🎉</h1>
-      <p>Deine Nachricht ist bei uns eingegangen. Wir melden uns in der Regel innerhalb von <strong>24&nbsp;Stunden</strong>.</p>
-      <div class="actions">
-        <a class="btn primary" href="/">Zurück zur Startseite</a>
-        <a class="btn ghost" href="mailto:business@sinematicimpressions.com">Direkt E-Mail senden</a>
-      </div>
-      <p class="small">Falls du diese Seite versehentlich erreicht hast, schreib uns kurz – wir kümmern uns.</p>
-    </section>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <img class="brand__mark" src="./logo-mark.svg" alt="" width="28" height="28" />
+      <span class="brand__name">Sinematic Impressions</span>
+    </a>
+    <a class="btn btn--ghost" href="./">Zur Startseite</a>
+  </header>
+
+  <main class="section">
+    <h1>Danke!</h1>
+    <p class="muted">Deine Nachricht wurde erfasst (Platzhalter ohne Backend).</p>
+    <div style="height:14px"></div>
+    <a class="btn btn--primary" href="./">Zurück</a>
   </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="muted">© <span id="year"></span> Sinematic Impressions</span>
+      <div class="footer__links">
+        <a href="./legal.html">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>
